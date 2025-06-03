@@ -144,56 +144,54 @@ function HeroSection({ openModal }: { openModal: () => void }) {
         {/* Card 1 */}
         <motion.div 
           className="absolute top-16 left-8 lg:left-24"
-          initial={{ y: 0, rotate: 15 }}
+          initial={{ y: 0 }}
           animate={{ 
-        y: [0, -10, 0],
-        transition: {
-          duration: 6,
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "mirror"
-        }
+            y: [0, -10, 0],
+            transition: {
+              duration: 6,
+              ease: "easeInOut",
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "mirror"
+            }
           }}
           whileHover={{ 
-        scale: 1.05,
-        rotate: 20, // Added subtle rotation on hover
-        transition: { duration: 0.3 }
+            scale: 1.05,
+            transition: { duration: 0.3 }
           }}
         >
           <Image
-        src="https://i.imgur.com/VNxvw3y.png"
-        alt="Credit Card Gradient"
-        width={320}
-        height={200}
-        className="shadow-2xl rounded-2xl"
+            src="https://i.imgur.com/VNxvw3y.png"
+            alt="Credit Card Gradient"
+            width={320}
+            height={200}
+            className="transform rotate-15 shadow-2xl rounded-2xl"
           />
         </motion.div>
 
         {/* Card 2 */}
         <motion.div 
           className="absolute bottom-20 right-16 lg:right-32"
-          initial={{ y: 0, rotate: 34 }}
+          initial={{ y: 0 }}
           animate={{ 
-        y: [0, 10, 0],
-        transition: {
-          duration: 7,
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "mirror"
-        }
+            y: [0, 10, 0],
+            transition: {
+              duration: 7,
+              ease: "easeInOut",
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "mirror"
+            }
           }}
           whileHover={{ 
-        scale: 1.05,
-        rotate: 28, // Added subtle rotation on hover (in opposite direction)
-        transition: { duration: 0.3 }
+            scale: 1.05,
+            transition: { duration: 0.3 }
           }}
         >
           <Image
-        src="https://i.imgur.com/tQmhIJR.png"
-        alt="Credit Card Zebra"
-        width={320}
-        height={200}
-        className="shadow-2xl rounded-2xl"
+            src="https://i.imgur.com/tQmhIJR.png"
+            alt="Credit Card Zebra"
+            width={320}
+            height={200}
+            className="transform rotate-[34deg] shadow-2xl rounded-2xl"
           />
         </motion.div>
       </div>
