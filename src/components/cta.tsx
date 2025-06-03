@@ -49,7 +49,7 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
           <input type="text" placeholder="Nome" className="p-2 rounded bg-white/20 text-white placeholder-gray-300" />
           <input type="text" placeholder="CNPJ" className="p-2 rounded bg-white/20 text-white placeholder-gray-300" />
           <input type="email" placeholder="Email" className="p-2 rounded bg-white/20 text-white placeholder-gray-300" />
-          <button type='button' className="bg-[#edfb06] text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600">
+          <button type='button' className="bg-[#edfb06] text-black px-6 py-3 rounded-full font-semibold hover:bg-blue-600">
             Junte-se à Lista de Espera
           </button>
         </motion.form>
