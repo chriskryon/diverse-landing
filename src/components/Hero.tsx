@@ -12,10 +12,8 @@ export default function Hero({ openModal }: HeroProps) {
       {/* Hero Content */}
       <div className="text-center px-4 sm:px-6 pt-20 relative z-10 w-full">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-6 sm:mb-8 max-w-4xl mx-auto break-words">
-          Diversidade é nosso <span className="font-bold">ativo</span>
-          .<br />
-          <span className="font-bold">Seu crescimento</span>,
-          <br />
+          Diversidade é nosso <span className="font-bold">ativo</span>.<br />
+          <span className="font-bold">Seu crescimento</span>,<br />
           nosso objetivo.
         </h1>
 

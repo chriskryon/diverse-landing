@@ -1,4 +1,4 @@
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CodeBlock, dracula } from "react-code-blocks";
 
 export default function ApiCodeBlock() {
   const code = `const response = await fetch('https://api.diverse.com/v1/pix', {
@@ -14,15 +14,14 @@ export default function ApiCodeBlock() {
   })
   });
   const data = await response.json();
-  console.log(data.qrCode); // Exibe QR Code`
+  console.log(data.qrCode); // Exibe QR Code`;
   return (
-    <CopyBlock
+    <CodeBlock
       text={code}
       language="typescript"
       showLineNumbers={false}
       theme={dracula}
-      codeBlock
       customStyle={{ backgroundColor: "#282a36", borderRadius: "8px" }}
     />
-  )
+  );
 }
