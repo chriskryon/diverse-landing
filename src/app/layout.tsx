@@ -6,8 +6,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sable - Digital Banking for Everyone",
-  description: "Modern digital banking with no hidden fees, instant transfers, and powerful financial tools.",
+  title: "Diverse LTDA",
+  description: "Diversidade é o nosso ativo, seu crescimento é nosso objetivo.",
 }
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>{children}</body>
     </html>
   )

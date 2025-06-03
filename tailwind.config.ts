@@ -6,11 +6,13 @@ const config: Config = {
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/**/*.{js,ts,jsx,tsx,mdx}", // Adiciona src/ para garantir que todos os arquivos são escaneados
 		"*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {
 			colors: {
+				"primary-yellow": "#edfb06",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {
