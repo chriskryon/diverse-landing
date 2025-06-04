@@ -8,6 +8,19 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Diverse LTDA",
   description: "Diversidade é o nosso ativo, seu crescimento é nosso objetivo.",
+  openGraph: {
+    images: [
+      {
+        url: "/logo.png",
+        width: 256,
+        height: 256,
+        alt: 'Logo da Diverse LTDA',
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  }
 }
 
 export default function RootLayout({
