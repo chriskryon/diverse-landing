@@ -54,17 +54,16 @@ export default function FinancialControl() {
 
         {/* Info Box */}
         <motion.div 
-          className="mt-12 bg-gray-900 text-white p-8 rounded-2xl"
+          className="mt-4 bg-gray-900 text-white p-8 rounded-2xl"
           ref={textBoxAnimations.ref}
           initial={textBoxAnimations.initial}
           animate={textBoxAnimations.controls}
           variants={{ visible: textBoxAnimations.visible }}
           whileHover={textBoxAnimations.hover}
         >
-          <p className="text-lg leading-relaxed">
-            Earn 2% cash back on favorite brands. Earn 2% cash back on favorite brands. Get premium benefits and more
-            customer service.
-          </p>
+            <p className="text-lg leading-relaxed">
+            Abra sua conta digital e solicite seu cartão de crédito em minutos, com controle financeiro!
+            </p>
         </motion.div>
       </div>
     </section>
