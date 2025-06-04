@@ -4,6 +4,14 @@ import { CreditCard, Globe, Building, Package, TestTube } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import RendimentoPayLogo from "./logos/LogoRendimentoPay"
+import PJSvg from "./icons/PJ"
+import BetaVersion from "./icons/BetaVersion"
+import ExclusiveProducts from "./icons/ExclusiveProducts"
+import PJIcon from "./icons/PJ"
+import CreditCardIcon from "./icons/CreditCard"
+import GeneralIcon from "./icons/General"
+import ExclusiveProductsIcon from "./icons/ExclusiveProducts"
+import BetaVersionIcon from "./icons/BetaVersion"
 
 
 export default function Benefits() {
@@ -12,31 +20,31 @@ export default function Benefits() {
 
   const benefits = [
     {
-      icon: CreditCard,
-      title: "para geral",
+      icon: GeneralIcon,
+      title: "Para Geral",
       text: "Trazemos a diversidade para o centro, formando serviços acolhedores para todo mundo.",
       color: "text-yellow-400",
     },
     {
-      icon: Globe,
-      title: "conta pessoa jurídica",
+      icon: PJIcon,
+      title: "Conta Pessoa Jurídica",
       text: "te falei? também ofereço a modalidade de conta jurídica.",
       color: "text-pink-500",
     },
     {
-      icon: Building,
-      title: "produtos exclusivos",
+      icon: ExclusiveProductsIcon,
+      title: "Produtos Exclusivos",
       text: "Em breve, vou trazer produtos exclusivos para te ajudar no dia a dia.",
       color: "text-yellow-400",
     },
     {
-      icon: Package,
-      title: "versão beta",
+      icon: BetaVersionIcon,
+      title: "Versão Beta",
       text: "Estou na minha primeira versão, valeu por estar aqui e me ajudar a melhorar.",
       color: "text-pink-500",
     },
     {
-      icon: TestTube,
+      icon: CreditCardIcon,
       title: "Cartão de Crédito",
       text: "Ainda estou preparando um cartão de crédito mara.",
       color: "text-yellow-400",
@@ -74,9 +82,11 @@ export default function Benefits() {
               {benefits.map((benefit, index) => (
                 <div
                   key={`mobile-benefit-${benefit.title}`}
-                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-3 border-2 border-[rgba(249,45,158,0.7)]"
+                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)]"
                 >
-                  <benefit.icon className={`w-6 h-6 ${benefit.color} mt-1 flex-shrink-0`} />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
+                  </div>
                   <div>
                     <h4 className="font-medium text-sm mb-1 text-black">{benefit.title}</h4>
                     <p className="text-xs text-black">{benefit.text}</p>
@@ -93,7 +103,7 @@ export default function Benefits() {
               {benefits.slice(0, 3).map((benefit, index) => (
                 <motion.div
                   key={`desktop-left-benefit-${benefit.title}`}
-                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-3 border-2 border-[rgba(249,45,158,0.7)]"
+                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)]"
                   initial={{ y: 0 }}
                   animate={{ 
                     y: hoveredCard === index ? 0 : [0, -10, 0],
@@ -108,7 +118,9 @@ export default function Benefits() {
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <benefit.icon className={`w-6 h-6 ${benefit.color} mt-1 flex-shrink-0`} />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
+                  </div>
                   <div>
                     <h4 className="font-medium text-sm mb-1 text-black">{benefit.title}</h4>
                     <p className="text-xs text-black">{benefit.text}</p>
@@ -133,7 +145,7 @@ export default function Benefits() {
               {benefits.slice(3).map((benefit, index) => (
                 <motion.div
                   key={`desktop-right-benefit-${benefit.title}`}
-                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-3 border-2 border-[rgba(249,45,158,0.7)]"
+                  className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)]"
                   initial={{ y: 0 }}
                   animate={{ 
                     y: hoveredCard === index + 3 ? 0 : [0, -10, 0],
@@ -148,7 +160,9 @@ export default function Benefits() {
                   onMouseEnter={() => setHoveredCard(index + 3)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <benefit.icon className={`w-6 h-6 ${benefit.color} mt-1 flex-shrink-0`} />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
+                  </div>
                   <div>
                     <h4 className="font-medium text-sm mb-1 text-black">{benefit.title}</h4>
                     <p className="text-xs text-black">{benefit.text}</p>

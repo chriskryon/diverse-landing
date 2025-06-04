@@ -1,5 +1,18 @@
 import { useState, useEffect } from "react";
 import { submitFormData } from "@/actions/form";
+import {
+	validateCPF,
+	validateCNPJ,
+	validateEmail,
+	validatePhone,
+	maskCPF,
+	maskCNPJ,
+	maskPhone,
+	emailSchema,
+	phoneSchema,
+	cpfSchema,
+	cnpjSchema,
+} from "@/utils/validators";
 
 export interface FormData {
 	name: string;
@@ -46,139 +59,15 @@ export default function useCallToActionForm(
 
 		const nameValid = formData.name.trim().length > 0;
 		const emailValid = validateEmail(formData.email);
-		const phoneValid = validatePhone(formData.phone.replace(/\D/g, ""));
-		const unmaskedCPF = formData.cpf.replace(/\D/g, "");
-		const cpfValid = unmaskedCPF.length === 11 && validateCPF(unmaskedCPF);
-		const unmaskedCNPJ = formData.cnpj.replace(/\D/g, "");
-		const cnpjValid = unmaskedCNPJ.length === 14 && validateCNPJ(unmaskedCNPJ);
+		const phoneValid = validatePhone(formData.phone);
+		const cpfValid = validateCPF(formData.cpf);
+		const cnpjValid = validateCNPJ(formData.cnpj);
 
 		// Todos os campos devem ser válidos
 		setIsFormValid(
 			nameValid && emailValid && phoneValid && cpfValid && cnpjValid,
 		);
 	}, [formData, isOpen]);
-
-	// Aplica máscara de CPF: 000.000.000-00
-	const maskCPF = (value: string) => {
-		return value
-			.replace(/\D/g, "") // Remove caracteres não numéricos
-			.replace(/(\d{3})(\d)/, "$1.$2")
-			.replace(/(\d{3})(\d)/, "$1.$2")
-			.replace(/(\d{3})(\d{1,2})/, "$1-$2")
-			.replace(/(-\d{2})\d+?$/, "$1"); // Limita a 11 dígitos
-	};
-
-	// Aplica máscara de CNPJ: 00.000.000/0000-00
-	const maskCNPJ = (value: string) => {
-		return value
-			.replace(/\D/g, "")
-			.replace(/(\d{2})(\d)/, "$1.$2")
-			.replace(/(\d{3})(\d)/, "$1.$2")
-			.replace(/(\d{3})(\d)/, "$1/$2")
-			.replace(/(\d{4})(\d{1,2})/, "$1-$2")
-			.replace(/(-\d{2})\d+?$/, "$1"); // Limita a 14 dígitos
-	};
-
-	// Aplica máscara de telefone: (00) 00000-0000
-	const maskPhone = (value: string) => {
-		return value
-			.replace(/\D/g, "")
-			.replace(/^(\d{2})(\d)/g, "($1) $2")
-			.replace(/(\d)(\d{4})$/, "$1-$2")
-			.replace(/(\d{5}-\d{4})\d+?$/, "$1"); // Limita a 11 dígitos
-	};
-
-	// Valida CPF
-	const validateCPF = (cpf: string) => {
-		const cleanCpf = cpf.replace(/[^\d]+/g, "");
-
-		if (
-			cleanCpf.length !== 11 ||
-			cleanCpf === "00000000000" ||
-			cleanCpf === "11111111111" ||
-			cleanCpf === "22222222222"
-		) {
-			return false;
-		}
-
-		// Validação de CPF
-		let soma = 0;
-		let resto: number;
-
-		for (let i = 1; i <= 9; i++) {
-			soma = soma + Number.parseInt(cleanCpf.substring(i - 1, i)) * (11 - i);
-		}
-
-		resto = (soma * 10) % 11;
-		if (resto === 10 || resto === 11) resto = 0;
-		if (resto !== Number.parseInt(cleanCpf.substring(9, 10))) return false;
-
-		soma = 0;
-		for (let i = 1; i <= 10; i++) {
-			soma = soma + Number.parseInt(cleanCpf.substring(i - 1, i)) * (12 - i);
-		}
-
-		resto = (soma * 10) % 11;
-		if (resto === 10 || resto === 11) resto = 0;
-		if (resto !== Number.parseInt(cleanCpf.substring(10, 11))) return false;
-
-		return true;
-	};
-
-	// Valida CNPJ
-	const validateCNPJ = (cnpj: string) => {
-		const cleanCnpj = cnpj.replace(/[^\d]+/g, "");
-
-		if (
-			cleanCnpj.length !== 14 ||
-			cleanCnpj === "00000000000000" ||
-			cleanCnpj === "11111111111111"
-		) {
-			return false;
-		}
-
-		// Validação do CNPJ
-		let tamanho = cleanCnpj.length - 2;
-		let numeros = cleanCnpj.substring(0, tamanho);
-		const digitos = cleanCnpj.substring(tamanho);
-		let soma = 0;
-		let pos = tamanho - 7;
-
-		for (let i = tamanho; i >= 1; i--) {
-			soma += Number.parseInt(numeros.charAt(tamanho - i)) * pos--;
-			if (pos < 2) pos = 9;
-		}
-
-		let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-		if (resultado !== Number.parseInt(digitos.charAt(0))) return false;
-
-		tamanho = tamanho + 1;
-		numeros = cleanCnpj.substring(0, tamanho);
-		soma = 0;
-		pos = tamanho - 7;
-
-		for (let i = tamanho; i >= 1; i--) {
-			soma += Number.parseInt(numeros.charAt(tamanho - i)) * pos--;
-			if (pos < 2) pos = 9;
-		}
-
-		resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-		if (resultado !== Number.parseInt(digitos.charAt(1))) return false;
-
-		return true;
-	};
-
-	// Valida telefone
-	const validatePhone = (phone: string) => {
-		const unmaskedPhone = phone.replace(/\D/g, "");
-		return unmaskedPhone.length >= 10 && unmaskedPhone.length <= 11;
-	};
-
-	// Valida email
-	const validateEmail = (email: string) => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(email);
-	};
 
 	// Gerencia a mudança nos inputs
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -195,10 +84,10 @@ export default function useCallToActionForm(
 			// Valida apenas se tiver o tamanho completo
 			const unmaskedValue = maskedValue.replace(/\D/g, "");
 			if (unmaskedValue.length === 11) {
-				const isValid = validateCPF(unmaskedValue);
+				const result = cpfSchema.safeParse(maskedValue);
 				setErrors({
 					...errors,
-					cpf: isValid ? "" : "CPF inválido",
+					cpf: result.success ? "" : "CPF inválido",
 				});
 			} else {
 				setErrors({ ...errors, cpf: "" });
@@ -214,10 +103,10 @@ export default function useCallToActionForm(
 			// Valida apenas se tiver o tamanho completo
 			const unmaskedValue = maskedValue.replace(/\D/g, "");
 			if (unmaskedValue.length === 14) {
-				const isValid = validateCNPJ(unmaskedValue);
+				const result = cnpjSchema.safeParse(maskedValue);
 				setErrors({
 					...errors,
-					cnpj: isValid ? "" : "CNPJ inválido",
+					cnpj: result.success ? "" : "CNPJ inválido",
 				});
 			} else {
 				setErrors({ ...errors, cnpj: "" });
@@ -233,10 +122,10 @@ export default function useCallToActionForm(
 			// Valida telefone se tiver pelo menos um dígito
 			const unmaskedValue = maskedValue.replace(/\D/g, "");
 			if (unmaskedValue.length > 0) {
-				const isValid = validatePhone(unmaskedValue);
+				const result = phoneSchema.safeParse(maskedValue);
 				setErrors({
 					...errors,
-					phone: isValid ? "" : "Telefone inválido",
+					phone: result.success ? "" : "Telefone inválido",
 				});
 			} else {
 				setErrors({ ...errors, phone: "" });
@@ -249,10 +138,10 @@ export default function useCallToActionForm(
 
 			// Validar email quando o campo tiver algum valor
 			if (value) {
-				const isValid = validateEmail(value);
+				const result = emailSchema.safeParse(value);
 				setErrors({
 					...errors,
-					email: isValid ? "" : "E-mail inválido",
+					email: result.success ? "" : "E-mail inválido",
 				});
 			} else {
 				setErrors({ ...errors, email: "" });
@@ -273,26 +162,9 @@ export default function useCallToActionForm(
 			return;
 		}
 
-		if (!formData.email.trim()) {
-			setErrors({
-				...errors,
-				email: "E-mail é obrigatório",
-				form: "Por favor, preencha seu e-mail",
-			});
-			return;
-		}
-
-		if (!formData.phone.trim()) {
-			setErrors({
-				...errors,
-				phone: "Telefone é obrigatório",
-				form: "Por favor, forneça um número de telefone",
-			});
-			return;
-		}
-
-		// Verifica e-mail
-		if (!validateEmail(formData.email)) {
+		// Validate email with Zod
+		const emailResult = emailSchema.safeParse(formData.email);
+		if (!emailResult.success) {
 			setErrors({
 				...errors,
 				email: "E-mail inválido",
@@ -301,17 +173,20 @@ export default function useCallToActionForm(
 			return;
 		}
 
-		// Validação do CPF - agora obrigatório
-		const unmaskedCPF = formData.cpf.replace(/\D/g, "");
-		if (unmaskedCPF.length === 0) {
+		// Validate phone with Zod
+		const phoneResult = phoneSchema.safeParse(formData.phone);
+		if (!phoneResult.success) {
 			setErrors({
 				...errors,
-				cpf: "CPF é obrigatório",
-				form: "Por favor, forneça um CPF",
+				phone: "Telefone inválido",
+				form: "Por favor, forneça um número de telefone válido",
 			});
 			return;
 		}
-		if (unmaskedCPF.length !== 11 || !validateCPF(unmaskedCPF)) {
+
+		// Validate CPF with Zod
+		const cpfResult = cpfSchema.safeParse(formData.cpf);
+		if (!cpfResult.success) {
 			setErrors({
 				...errors,
 				cpf: "CPF inválido",
@@ -320,32 +195,13 @@ export default function useCallToActionForm(
 			return;
 		}
 
-		// Validação do CNPJ - agora obrigatório
-		const unmaskedCNPJ = formData.cnpj.replace(/\D/g, "");
-		if (unmaskedCNPJ.length === 0) {
-			setErrors({
-				...errors,
-				cnpj: "CNPJ é obrigatório",
-				form: "Por favor, forneça um CNPJ",
-			});
-			return;
-		}
-		if (unmaskedCNPJ.length !== 14 || !validateCNPJ(unmaskedCNPJ)) {
+		// Validate CNPJ with Zod
+		const cnpjResult = cnpjSchema.safeParse(formData.cnpj);
+		if (!cnpjResult.success) {
 			setErrors({
 				...errors,
 				cnpj: "CNPJ inválido",
 				form: "Por favor, forneça um CNPJ válido",
-			});
-			return;
-		}
-
-		// Validação do telefone
-		const unmaskedPhone = formData.phone.replace(/\D/g, "");
-		if (!validatePhone(unmaskedPhone)) {
-			setErrors({
-				...errors,
-				phone: "Telefone inválido",
-				form: "Por favor, forneça um número de telefone válido",
 			});
 			return;
 		}
