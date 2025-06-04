@@ -7,7 +7,7 @@ export default function FinancialControl() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="text-black text-4xl lg:text-5xl font-bold mb-6">
-              Abertura de conta & cartão de crédito <span className="text-pink-500">em cinco minutos</span>.
+              Abertura de conta & cartão de crédito <span className="text-diverse-pink">em cinco minutos</span>.
             </h2>
           </div>
 

@@ -6,13 +6,15 @@ const config: Config = {
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/**/*.{js,ts,jsx,tsx,mdx}", // Adiciona src/ para garantir que todos os arquivos são escaneados
+		"./src/**/*.{js,ts,jsx,tsx,mdx}",
 		"*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'gradient-to-r': 'linear-gradient(to right, var(--tw-gradient-stops))',
+			},
 			colors: {
-				"primary-yellow": "#edfb06",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {
@@ -93,6 +95,6 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [],
 };
 export default config;

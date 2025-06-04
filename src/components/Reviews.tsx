@@ -32,7 +32,7 @@ export default function Reviews() {
               </div>
               <blockquote className="text-lg mb-6 leading-relaxed">"{testimonial.text}"</blockquote>
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-yellow-400 rounded-full" />
+                <div className="w-10 h-10 bg-gradient-to-r from-diverse-pink to-diverse-yellow rounded-full" />
                 <div>
                   <div className="font-medium">{testimonial.author}</div>
                   <div className="text-sm text-gray-400">Verified Customer</div>

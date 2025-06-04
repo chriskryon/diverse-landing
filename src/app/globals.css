@@ -1,13 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-diverse-yellow: var(--yellow);
+  --color-diverse-pink: var(--pink);
+  --color-diverse-black: var(--black);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -45,12 +44,16 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-black: var(--black);
 }
 
 :root {
+  --yellow: #EBFF00;
+  --pink: #F82D9E;
+  --black: #181919;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.2123 0.0016 197.04);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -117,12 +120,10 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--border);
-    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  /* * {
+    @apply border-border outline-ring/50;
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+    @apply bg-background text-foreground;
+  } */
 }

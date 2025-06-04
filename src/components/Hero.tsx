@@ -20,7 +20,7 @@ export default function Hero({ openModal }: HeroProps) {
         <button
         type="button"
         onClick={openModal}
-        className="bg-gradient-to-r from-pink-500 to-yellow-400 text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg hover:bg-yellow-300 transition-colors">
+        className="bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg hover:bg-yellow-300 transition-colors">
           Explore
         </button>
       </div>

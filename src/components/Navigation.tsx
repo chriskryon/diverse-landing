@@ -51,7 +51,7 @@ export default function Navigation({ openModal }: NavigationProps) {
             <button
               type="button"
               onClick={openModal}
-              className="bg-gradient-to-r from-pink-500 to-yellow-400 text-black px-4 lg:px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity text-sm lg:text-base">
+              className="bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-4 lg:px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity text-sm lg:text-base">
               ENTRAR NA LISTA DE ESPERA
             </button>
           </div>
@@ -61,12 +61,12 @@ export default function Navigation({ openModal }: NavigationProps) {
             <button
               type="button"
               onClick={openModal}
-              className="mr-4 bg-gradient-to-r from-pink-500 to-yellow-400 text-black px-3 py-1 rounded-full font-medium hover:opacity-90 transition-opacity text-xs">
+              className="mr-4 bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-3 py-1 rounded-full font-medium hover:opacity-90 transition-opacity text-xs">
               CADASTRAR
             </button>
             <button 
               type="button"
-              className="text-white p-1 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400"
+              className="text-white p-1 rounded-full bg-gradient-to-r from-diverse-pink to-diverse-yellow"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >

@@ -185,7 +185,7 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
               <button 
                 type="submit" 
                 disabled={isSubmitting || !isFormValid}
-                className={`bg-gradient-to-r from-pink-500 to-yellow-400 text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium hover:opacity-90 transition-colors mt-2 relative text-xs sm:text-sm
+                className={`bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium hover:opacity-90 transition-colors mt-2 relative text-xs sm:text-sm
                   ${(isSubmitting || !isFormValid) ? 'opacity-50 cursor-not-allowed' : ''}
                 `}
               >
