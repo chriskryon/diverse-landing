@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { submitWaitlist } from "@/services/api";
+import { validateCNPJ, validateCPF, validatePhone } from "@/utils/validators";
 
 interface FormData {
 	name: string;
@@ -12,11 +13,17 @@ interface FormData {
 }
 
 const formDataSchema = z.object({
-	name: z.string().min(1, "nome"),
-	cpf: z.string().min(1, "CPF"),
-	cnpj: z.string().min(1, "CNPJ"),
-	email: z.string().email("e-mail"),
-	phone: z.string().min(1, "telefone"),
+  name: z.string().min(1, "nome"),
+  cpf: z.string()
+    .min(1, "CPF")
+    .refine(value => validateCPF(value), { message: "CPF inválido" }),
+  cnpj: z.string()
+    .min(1, "CNPJ")
+    .refine(value => validateCNPJ(value), { message: "CNPJ inválido" }),
+  email: z.string().email("e-mail"),
+  phone: z.string()
+    .min(1, "telefone")
+    .refine(value => validatePhone(value), { message: "Telefone inválido" }),
 });
 
 export async function submitFormData(data: FormData) {
@@ -34,6 +41,14 @@ export async function submitFormData(data: FormData) {
 		const cleanCpf = data.cpf.replace(/\D/g, "");
 		const cleanCnpj = data.cnpj.replace(/\D/g, "");
 		const cleanPhone = data.phone.replace(/\D/g, "");
+
+		console.log("Formulário recebido:", {
+			name: data.name,
+			cpf: cleanCpf.substring(0, 3) + "...",
+			cnpj: cleanCnpj.substring(0, 3) + "...",
+			email: data.email.split("@")[0] + "@...",
+			phone: cleanPhone.substring(0, 3) + "...",
+		});
 
 		// Enviar dados para o serviço de API
 		const apiResponse = await submitWaitlist({
