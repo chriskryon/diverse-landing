@@ -1,5 +1,7 @@
 "use server";
 
+import { z } from "zod";
+
 interface FormData {
 	name: string;
 	cpf: string;
@@ -8,17 +10,20 @@ interface FormData {
 	phone: string;
 }
 
+const formDataSchema = z.object({
+	name: z.string().min(1, "nome"),
+	cpf: z.string().min(1, "CPF"),
+	cnpj: z.string().min(1, "CNPJ"),
+	email: z.string().email("e-mail"),
+	phone: z.string().min(1, "telefone"),
+});
+
 export async function submitFormData(data: FormData) {
 	try {
-		// Validação básica no servidor
-		if (!data.name || !data.cpf || !data.cnpj || !data.email || !data.phone) {
-			const missingFields = [];
-			if (!data.name) missingFields.push("nome");
-			if (!data.cpf) missingFields.push("CPF");
-			if (!data.cnpj) missingFields.push("CNPJ");
-			if (!data.email) missingFields.push("e-mail");
-			if (!data.phone) missingFields.push("telefone");
-
+		// Validação com Zod
+		const result = formDataSchema.safeParse(data);
+		if (!result.success) {
+			const missingFields = result.error.errors.map((e) => e.message);
 			return {
 				error: `Por favor, preencha todos os campos obrigatórios: ${missingFields.join(
 					", ",
