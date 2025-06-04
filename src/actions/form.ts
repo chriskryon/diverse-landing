@@ -31,12 +31,10 @@ export async function submitFormData(data: FormData) {
 			};
 		}
 
-		// Remover formatação dos documentos
 		const cleanCpf = data.cpf.replace(/\D/g, "");
 		const cleanCnpj = data.cnpj.replace(/\D/g, "");
 		const cleanPhone = data.phone.replace(/\D/g, "");
 
-		// Aqui você pode adicionar seu código para salvar os dados no banco de dados
 		console.log("Dados recebidos:", {
 			name: data.name,
 			cpf: cleanCpf,
