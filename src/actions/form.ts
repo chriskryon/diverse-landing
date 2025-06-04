@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { submitWaitlist } from "@/services/api";
 
 interface FormData {
 	name: string;
@@ -20,7 +21,6 @@ const formDataSchema = z.object({
 
 export async function submitFormData(data: FormData) {
 	try {
-		// Validação com Zod
 		const result = formDataSchema.safeParse(data);
 		if (!result.success) {
 			const missingFields = result.error.errors.map((e) => e.message);
@@ -35,7 +35,8 @@ export async function submitFormData(data: FormData) {
 		const cleanCnpj = data.cnpj.replace(/\D/g, "");
 		const cleanPhone = data.phone.replace(/\D/g, "");
 
-		console.log("Dados recebidos:", {
+		// Enviar dados para o serviço de API
+		const apiResponse = await submitWaitlist({
 			name: data.name,
 			cpf: cleanCpf,
 			cnpj: cleanCnpj,
@@ -43,10 +44,11 @@ export async function submitFormData(data: FormData) {
 			phone: cleanPhone,
 		});
 
-		// Simular um pequeno atraso para mostrar o loading state
-		await new Promise((resolve) => setTimeout(resolve, 1000));
-
-		return { success: true };
+		if (apiResponse.success) {
+			return { success: true };
+		} else {
+			return { error: apiResponse.error || "Falha ao processar a solicitação" };
+		}
 	} catch (error) {
 		console.error("Erro ao processar formulário:", error);
 		return {

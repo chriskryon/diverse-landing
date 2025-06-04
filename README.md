@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Diverse Landing Page
 
-## Getting Started
+Este é um projeto de landing page para a Diverse. O projeto foi construído com [Next.js](https://nextjs.org) utilizando a abordagem App Router.
 
-First, run the development server:
+## Tecnologias Utilizadas
+
+- **Next.js**: Framework React com renderização híbrida
+- **TypeScript**: Tipagem estática para melhor qualidade de código
+- **Tailwind CSS**: Framework CSS utilitário para estilização
+- **Framer Motion**: Biblioteca para animações fluidas
+- **React Hook Form**: Para gerenciamento de formulários
+- **Axios**: Cliente HTTP baseado em promessa para o navegador e node.js
+
+## Iniciando o Desenvolvimento
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/               # Rotas e layouts (App Router)
+├── components/        # Componentes reutilizáveis
+├── hooks/             # Custom hooks (animações, formulários, etc.)
+├── services/          # Serviços de API
+├── styles/            # Estilos globais
+└── utils/             # Funções utilitárias
+```
 
-## Learn More
+## Configuração do Backend
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Instale as dependências
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install axios
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Configure as variáveis de ambiente
 
-## Deploy on Vercel
+Crie um arquivo `.env.local` na raiz do projeto:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+NEXT_PUBLIC_API_URL=https://sandbox.api.norbaas.com.br/
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. Integração Backend
+
+Tentei deixar configurado para facilitar a integração com backend. A estrutura é a seguinte:
+
+- `services/api.ts`: Configuração do Axios e funções para chamadas à API
+- `actions/form.ts`: Server Action que processa o formulário e chama o serviço de API
+
+Para adicionar endpoints ou modificar o comportamento, edite os arquivos:
+
+```tsx
+// src/services/api.ts - Adicione novos endpoints aqui
+export const novoEndpoint = async (data) => {
+  return api.post('/novo-endpoint', data);
+};
+
+// src/actions/form.ts - Modifique o processamento de formulário aqui
+export async function submitFormData(data: FormData) {
+  // ...seu código
+}
+```
