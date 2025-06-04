@@ -71,11 +71,11 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
               transition={{ duration: 0.8 }}
               className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3"
             >
-              Lista de espera
+              Junte-se à Lista de Espera
             </motion.h1>
             
             <p className="text-xs sm:text-sm text-gray-200 mb-4">
-              Gestão financeira inteligente e taxas ocultas.
+              Descubra uma nova forma de lidar com seu dinheiro!
             </p>
             
             {errors.form && (

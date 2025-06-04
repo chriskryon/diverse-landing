@@ -65,7 +65,7 @@ export default function Navigation({ openModal }: NavigationProps) {
             </button>
             <button 
               type="button"
-              className="text-white p-1 rounded-full bg-gradient-to-r from-diverse-pink to-diverse-yellow"
+              className="text-white p-1 rounded-full bg-diverse-yellow"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >

@@ -28,11 +28,14 @@ export default function Benefits() {
           animate={titleAnimations.controls}
           variants={titleAnimations.variants}
         >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            No hidden fees. No credit checks.
-            <br />
-            No more old-school banking credit.
-          </h2>
+            <h2 className="text-3xl lg:text-5xl font-extrabold mb-4 leading-tight">
+              Descubra uma nova forma de <span className="text-diverse-pink">lidar com seu dinheiro</span>
+              <br />
+                <span className="text-xl lg:text-2xl text-gray-100 font-semibold py-0">Simples, digital e feita para você.</span>
+                </h2>
+                <p className="text-lg text-gray-300 mt-2 max-w-2xl mx-auto py-0 text-justify">
+                  Tudo o que você precisa para cuidar do seu dinheiro, com praticidade e segurança. Sem complicação, sem burocracia.
+                </p>
         </motion.div>
 
         <div className="relative flex justify-center mb-16">
@@ -55,7 +58,7 @@ export default function Benefits() {
                 width={300} 
                 height={600} 
                 z-index={999}
-                className="-rotate-20 shadow-2xl mx-auto" 
+                className="-rotate-20 shadow-2xl mx-auto opacity-60" 
               />
             </motion.div>
             
