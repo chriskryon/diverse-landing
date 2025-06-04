@@ -4,7 +4,7 @@ import { useElementInView } from "./useElementInView";
 export function useBenefitsAnimations() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   
-  // Animation refs and controls
+  // Animation refs and controls - Use threshold 0.1 for earlier triggering
   const titleAnimation = useElementInView(0.1);
   const mobileAnimation = useElementInView(0.1);
   const desktopAnimation = useElementInView(0.1);
@@ -31,15 +31,17 @@ export function useBenefitsAnimations() {
     }
   };
 
-  // Title animations
+  // Title animations with variants properly defined in the hook
   const titleAnimations = {
     ref: titleAnimation.ref,
     controls: titleAnimation.controls,
     initial: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.7 } 
+    variants: {
+      visible: { 
+        opacity: 1, 
+        y: 0,
+        transition: { duration: 0.7 } 
+      }
     }
   };
 

@@ -26,6 +26,7 @@ export default function Benefits() {
           ref={titleAnimations.ref}
           initial={titleAnimations.initial}
           animate={titleAnimations.controls}
+          variants={titleAnimations.variants}
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             No hidden fees. No credit checks.
