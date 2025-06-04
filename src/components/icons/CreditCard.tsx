@@ -4,8 +4,8 @@ import type { IconProps } from './PJ';
 import ExclusiveProducts from './ExclusiveProducts';
 
 const CreditCardIcon: React.FC<IconProps> = ({
-  width = 24,
-  height = 24,
+  width = 48,
+  height = 48,
   className = '',
   ...props
 }) => {

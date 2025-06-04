@@ -2,8 +2,8 @@ import type * as React from "react";
 
 const BetaVersionIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={51}
-    height={54}
+    width={48}
+    height={48}
     viewBox="0 0 51 54"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
