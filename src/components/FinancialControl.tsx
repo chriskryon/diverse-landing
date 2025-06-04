@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Dashboard from "../../public/dashboard.png"
 
 export default function FinancialControl() {
   return (
@@ -14,7 +15,7 @@ export default function FinancialControl() {
           <div className="bg-gray-50 rounded-2xl flex items-center justify-center h-full">
             {/* Dashboard Interface Image */}
             <Image
-              src="https://i.imgur.com/FjZzBbF.png"
+              src={Dashboard}
               alt="Dashboard Interface"
               width={800}
               height={600}

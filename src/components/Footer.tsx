@@ -1,6 +1,5 @@
-import { Download, Mail, MapPin, Smartphone } from "lucide-react"
+import { Download, DownloadIcon, Mail, MapPin, Smartphone } from "lucide-react"
 import LogoDiverse from "./logos/Logo"
-// Atualizar importação do Logo
 
 export default function Footer() {
   const footerLinks = {
@@ -16,20 +15,22 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         {/* Join Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-8">Join over 400,000 accounts</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8">
+            Descubra uma nova forma de gerenciar seu dinheiro com praticidade e segurança
+            </h2>
 
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
             <button className="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors">
-              <Download className="w-6 h-6" />
+              <DownloadIcon className="w-6 h-6" />
               <div className="text-left">
-                <div className="text-xs">Download on the</div>
+                <div className="text-xs">Em breve na</div>
                 <div className="font-medium">App Store</div>
               </div>
             </button>
             <button className="flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors">
-              <Smartphone className="w-6 h-6" />
+              <DownloadIcon className="w-6 h-6" />
               <div className="text-left">
-                <div className="text-xs">Get it on</div>
+                <div className="text-xs">Em breve no</div>
                 <div className="font-medium">Google Play</div>
               </div>
             </button>

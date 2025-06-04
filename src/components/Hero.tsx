@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import CardGradient from "../../public/gradientCard.png"
+import CardZebra from "../../public/zebraCard.png"
 
 interface HeroProps {
   openModal: () => void
@@ -20,7 +22,8 @@ export default function Hero({ openModal }: HeroProps) {
         <button
         type="button"
         onClick={openModal}
-        className="bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg hover:bg-yellow-300 transition-colors">
+        className="bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg transition-colors
+          hover:bg-gradient-to-r hover:from-diverse-yellow hover:to-diverse-pink">
           Explore
         </button>
       </div>
@@ -29,7 +32,7 @@ export default function Hero({ openModal }: HeroProps) {
       <div className="absolute inset-0 pointer-events-none w-full">
         {/* Card 1 */}
         <motion.div 
-          className="absolute top-32 left-4 sm:left-8 lg:left-24 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
+          className="absolute bottom-16 left-4 sm:left-8 lg:left-24 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
           initial={{ y: 0 }}
           animate={{ 
             y: [0, -10, 0],
@@ -46,11 +49,11 @@ export default function Hero({ openModal }: HeroProps) {
           }}
         >
           <Image
-            src="https://i.imgur.com/VNxvw3y.png"
+            src={CardGradient}
             alt="Credit Card Gradient"
-            width={320}
+            width={200}
             height={200}
-            className="transform rotate-15 shadow-2xl rounded-2xl"
+            className="transform -rotate-45 shadow-2xl rounded-2xl"
           />
         </motion.div>
 
@@ -73,9 +76,9 @@ export default function Hero({ openModal }: HeroProps) {
           }}
         >
           <Image
-            src="https://i.imgur.com/tQmhIJR.png"
+            src={CardZebra}
             alt="Credit Card Zebra"
-            width={320}
+            width={200}
             height={200}
             className="transform rotate-[34deg] shadow-2xl rounded-2xl"
           />

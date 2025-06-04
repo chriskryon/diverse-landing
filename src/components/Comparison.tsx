@@ -1,5 +1,7 @@
 import { Check } from "lucide-react"
 import Image from "next/image"
+import CardGradient from "../../public/gradientCard.png"
+import CardZebra from "../../public/zebraCard.png"
 
 export default function Comparison() {
   const cards = [
@@ -40,7 +42,7 @@ export default function Comparison() {
                 <div className="mb-6 flex flex-col items-center text-center">
                 {/* Credit Card Image */}
                 <Image
-                  src={index === 0 ? "https://i.imgur.com/2h0FCpo.png" : "https://i.imgur.com/wubzIic.png"}
+                  src={index === 0 ? CardGradient : CardZebra}
                   alt={`Credit Card ${index + 1}`}
                   width={240}
                   height={150}
