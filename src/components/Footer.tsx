@@ -3,11 +3,10 @@ import LogoDiverse from "./logos/Logo"
 
 export default function Footer() {
   const footerLinks = {
-    "Sable Credit": ["Features", "Security", "Apply"],
-    Contact: ["Support", "Sales", "Help"],
-    App: ["Download", "Features", "Updates"],
-    Learn: ["Blog", "Resources", "Guides"],
-    "Banking Basics": ["Getting Started", "FAQs", "Tips"],
+    "Sobre": ["Quem Somos", "Nossa Missão", "Carreiras"],
+    "Produtos": ["Cartão de Crédito", "Conta Digital", "Seguros"],
+    "Suporte": ["Central de Ajuda", "FAQ", "Contato"],
+    "Legal": ["Termos de Uso", "Privacidade", "Segurança"],
   }
 
   return (

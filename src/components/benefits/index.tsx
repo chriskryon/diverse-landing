@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
 import RendimentoPayLogo from "../logos/LogoRendimentoPay"
-import AppOnIphone from "../../public/app.png"
+import AppOnIphone from "../../../public/app.png"
 import { benefits, features } from "./data"
 
 export default function Benefits() {
