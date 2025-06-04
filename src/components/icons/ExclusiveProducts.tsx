@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import exclusiveProductsImg from '../../../public/exclusiveProducts.png';
+import exclusiveProductsImg from '../../../public/icons/exclusiveProducts.png';
 import type { IconProps } from './PJ';
 
 const ExclusiveProductsIcon: React.FC<IconProps> = ({

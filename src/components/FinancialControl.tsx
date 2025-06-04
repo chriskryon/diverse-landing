@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Dashboard from "../../public/dashboard.png"
+import Dashboard from "../../public/images/dashboard.png"
 
 export default function FinancialControl() {
   return (

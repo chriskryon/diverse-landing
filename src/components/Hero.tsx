@@ -1,8 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import CardGradient from "../../public/gradientCard.png"
-import CardZebra from "../../public/zebraCard.png"
+import CardGradient from "../../public/cards/gradientCard.png"
+import CardZebra from "../../public/cards/zebraCard.png"
 
 interface HeroProps {
   openModal: () => void

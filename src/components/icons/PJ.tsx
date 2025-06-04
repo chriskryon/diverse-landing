@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { ImageProps } from 'next/image';
-import PJAccount from '../../../public/PJAccount.png';
+import PJAccount from '../../../public/icons/PJAccount.png';
 
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {
