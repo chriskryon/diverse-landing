@@ -2,6 +2,7 @@
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import LogoDiverse from "./logos/Logo"
+import LogoDiverseNoText from "./logos/LogoNoText"
 
 interface NavigationProps {
   openModal: () => void
@@ -18,21 +19,29 @@ export default function Navigation({ openModal }: NavigationProps) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <LogoDiverse height={40}/>
+            {/* Desktop Logo */}
+            <div className="hidden md:block">
+              <LogoDiverse height={32} />
+            </div>
+            
+            {/* Mobile Logo */}
+            <div className="block md:hidden">
+              <LogoDiverseNoText height={32} />
+            </div>
           </div>
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <a href="#" className="text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               CREDIT
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               DEBIT
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               APP
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               API's
             </a>
           </div>
@@ -53,18 +62,18 @@ export default function Navigation({ openModal }: NavigationProps) {
               type="button"
               onClick={openModal}
               className="mr-4 bg-gradient-to-r from-pink-500 to-yellow-400 text-black px-3 py-1 rounded-full font-medium hover:opacity-90 transition-opacity text-xs">
-              Lista de Espera
+              CADASTRAR
             </button>
             <button 
               type="button"
-              className="text-white p-2"
+              className="text-white p-1 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 text-black" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5 text-black" />
               )}
             </button>
           </div>
@@ -73,18 +82,18 @@ export default function Navigation({ openModal }: NavigationProps) {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 border-t border-gray-800">
-          <div className="px-4 pt-2 pb-4 space-y-4">
-            <a href="#" className="block py-2 px-2 text-white hover:text-pink-500 transition-colors font-medium">
+        <div className="md:hidden bg-black/95 border-t border-gray-800 animate-fadeIn">
+          <div className="px-4 pt-2 pb-4 space-y-3">
+            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
               CREDIT
             </a>
-            <a href="#" className="block py-2 px-2 text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
               DEBIT
             </a>
-            <a href="#" className="block py-2 px-2 text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
               APP
             </a>
-            <a href="#" className="block py-2 px-2 text-white hover:text-pink-500 transition-colors font-medium">
+            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
               API's
             </a>
           </div>

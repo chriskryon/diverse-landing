@@ -8,6 +8,10 @@ import CreditCardIcon from "./icons/CreditCard"
 import GeneralIcon from "./icons/General"
 import ExclusiveProductsIcon from "./icons/ExclusiveProducts"
 import BetaVersionIcon from "./icons/BetaVersion"
+import PixIcon from "./icons/Pix"
+import PayAndReceiveIcon from "./icons/PayAndReceive"
+import TransferIcon from "./icons/Transfer"
+import InsuranceIcon from "./icons/Insurance"
 
 
 export default function Benefits() {
@@ -43,6 +47,29 @@ export default function Benefits() {
       icon: CreditCardIcon,
       title: "Cartão de Crédito",
       text: "Ainda estou preparando um cartão de crédito mara.",
+      color: "text-yellow-400",
+    },
+  ]
+
+  const features = [
+    {
+      icon: PixIcon,
+      text: "Área Pix",
+      color: "text-yellow-400",
+    },
+    {
+      icon: PayAndReceiveIcon,
+      text: "Pagar e Receber",
+      color: "text-pink-500",
+    },
+    {
+      icon: TransferIcon,
+      text: "Transferir",
+      color: "text-yellow-400",
+    },
+    {
+      icon: InsuranceIcon,
+      text: "Seguros",
       color: "text-yellow-400",
     },
   ]
@@ -169,17 +196,26 @@ export default function Benefits() {
           </div>
         </div>
 
-        {/* Rendimento Pay Section */}
         <div className="text-center">
-          {/* <h3 className="text-2xl font-bold mb-8">Rendimento pay</h3> */}
             <RendimentoPayLogo height={80} className="mx-auto mb-8" />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {Array.from({ length: 6 }, (_, i) => (
-              <div key={`rendimento-box-id-${i}-${Date.now()}`} className="bg-pink-500 p-6 rounded-lg aspect-square flex items-center justify-center">
-                <div className="w-8 h-8 bg-white rounded opacity-80" />
+          
+            <div className="flex justify-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:auto-cols-auto lg:grid-flow-col gap-4 items-center w-fit">
+                  {features.map((item, i) => (
+                    <motion.div
+                      key={`rendimento-benefit-${i}`}
+                      className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-[rgba(249,45,158,0.7)] aspect-square cursor-pointer p-6 min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px]"
+                      whileHover={{ scale: 1.07, y: -8, boxShadow: "0 8px 32px rgba(249,45,158,0.15)" }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <div className="w-10 h-10 flex items-center justify-center mb-2">
+                        <item.icon className={`w-10 h-10 ${item.color}`} />
+                      </div>
+                      <span className="text-black text-xs font-medium text-center">{item.text}</span>
+                    </motion.div>
+                  ))}
               </div>
-            ))}
-          </div>
+            </div>
         </div>
       </div>
     </section>
