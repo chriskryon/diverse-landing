@@ -1,9 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Montserrat } from 'next/font/google';
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
+
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'], // Especificar os pesos que você usará
+  variable: '--font-montserrat', // Adicionar como variável CSS
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://diverse-landing.vercel.app"
 
@@ -44,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-BR" className={`${montserrat.variable}`}>
+      <body className={montserrat.className}>{children}</body>
     </html>
   )
 }
