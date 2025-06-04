@@ -18,7 +18,7 @@ export default function FinancialControl() {
               <Image
                 src={dashboard}
                 alt="Dashboard Interface"
-                width={800}
+                width={1280}
                 height={600}
                 className="w-full h-full object-cover rounded-xl shadow-sm"
               />
