@@ -13,7 +13,7 @@ export default function FinancialControl() {
   } = useFinancialControlAnimations();
 
   return (
-    <section className="bg-white text-black py-20 px-6 overflow-x-hidden w-full">
+    <section id="financial-control" className="bg-white text-black py-20 px-6 overflow-x-hidden w-full">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Title Section */}

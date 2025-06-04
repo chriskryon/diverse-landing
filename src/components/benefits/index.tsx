@@ -18,7 +18,7 @@ export default function Benefits() {
   } = useBenefitsAnimations();
   
   return (
-    <section className="bg-gray-900 py-20 px-6 overflow-x-hidden w-full box-border">
+    <section id="benefits" className="bg-gray-900 py-20 px-6 overflow-x-hidden w-full box-border">
       <div className="max-w-6xl mx-auto box-border">
         {/* Title Section */}
         <motion.div 

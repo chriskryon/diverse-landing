@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import LogoDiverse from "./logos/Logo"
 import LogoDiverseNoText from "./logos/LogoNoText"
+import { useSmoothScroll } from "../hooks/useSmoothScroll"
 
 interface NavigationProps {
   openModal: () => void
@@ -10,8 +11,17 @@ interface NavigationProps {
 
 export default function Navigation({ openModal }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { handleSmoothScroll } = useSmoothScroll()
   
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
+
+  // Navigation links object
+  const navigationLinks = [
+    { name: "INÍCIO", href: "#hero" },
+    { name: "BENEFÍCIOS", href: "#benefits" },
+    { name: "CONTA DIGITAL", href: "#financial-control" },
+    { name: "DESENVOLVEDORES", href: "#api-section" },
+  ]
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
@@ -30,18 +40,16 @@ export default function Navigation({ openModal }: NavigationProps) {
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-8 ml-4 self-end">
-              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
-              CREDIT
-              </a>
-              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
-              DEBIT
-              </a>
-              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
-              APP
-              </a>
-              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
-              API's
-              </a>
+              {navigationLinks.map((link) => (
+                <a 
+                  key={link.name}
+                  href={link.href} 
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium"
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
 
           {/* CTA Button */}
@@ -83,18 +91,19 @@ export default function Navigation({ openModal }: NavigationProps) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-black/95 border-t border-gray-800 animate-fadeIn">
           <div className="px-4 pt-2 pb-4 space-y-3">
-            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
-              CREDIT
-            </a>
-            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
-              DEBIT
-            </a>
-            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
-              APP
-            </a>
-            <a href="#" className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium">
-              API's
-            </a>
+            {navigationLinks.map((link) => (
+              <a 
+                key={link.name}
+                href={link.href} 
+                className="block py-2 px-2 text-sm text-white hover:text-pink-500 transition-colors font-medium"
+                onClick={(e) => {
+                  handleSmoothScroll(e, link.href);
+                  toggleMobileMenu();
+                }}
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
         </div>
       )}

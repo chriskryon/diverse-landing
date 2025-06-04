@@ -17,7 +17,7 @@ export default function ApiSection() {
   ];
 
   return (
-    <section className="py-10 bg-gray-900 text-white overflow-x-hidden w-full">
+    <section id="api-section" className="py-10 bg-gray-900 text-white overflow-x-hidden w-full">
       <div className="max-w-6xl mx-auto px-6">
         {/* Title Section */}
         <motion.h2
