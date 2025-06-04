@@ -26,7 +26,6 @@ export default function Hero({ openModal }: HeroProps) {
     textAnimations,
     buttonAnimations,
     cardHoverAnimations,
-    cardPulseAnimations,
     borderAnimations,
     mobileGlowAnimations
   } = useHeroAnimations()
@@ -47,7 +46,7 @@ export default function Hero({ openModal }: HeroProps) {
         transition={textAnimations.container.transition}
       >
         <motion.h1 
-          className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-6 sm:mb-8 max-w-4xl mx-auto break-words"
+          className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-light leading-tight mb-6 sm:mb-8 max-w-4xl mx-auto break-words"
           initial={textAnimations.heading.initial}
           animate={textAnimations.heading.animate}
           transition={textAnimations.heading.transition}
@@ -105,7 +104,7 @@ export default function Hero({ openModal }: HeroProps) {
         <motion.div 
           className={isMobile ? 
             "absolute top-24 left-4 scale-[0.65] origin-top-left" : 
-            "absolute bottom-16 left-4 sm:left-8 lg:left-24 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
+            "absolute bottom-16 left-0 sm:left-4 lg:left-16 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
           }
           style={isMobile ? card1Animations.mobileStyle : card1Animations.style}
           initial={card1Animations.initial}
@@ -113,8 +112,17 @@ export default function Hero({ openModal }: HeroProps) {
           whileHover={cardHoverAnimations.card1}
         >
           <motion.div
-            animate={cardPulseAnimations.card1.animate}
-            transition={cardPulseAnimations.card1.transition}
+            animate={{
+              y: [0, -10, 0]
+            }}
+            transition={{
+              y: {
+                duration: 6,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "mirror"
+              }
+            }}
             className="relative"
           >
             <Image
@@ -140,8 +148,17 @@ export default function Hero({ openModal }: HeroProps) {
           whileHover={cardHoverAnimations.card2}
         >
           <motion.div
-            animate={cardPulseAnimations.card2.animate}
-            transition={cardPulseAnimations.card2.transition}
+            animate={{
+              y: [0, 10, 0]
+            }}
+            transition={{
+              y: {
+                duration: 7,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "mirror"
+              }
+            }}
             className="relative"
           >
             <Image
