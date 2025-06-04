@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Dashboard from "../../public/images/dashboard.png"
+import dashboard from "../../public/images/dashboard.png"
 
 export default function FinancialControl() {
   return (
@@ -12,15 +12,17 @@ export default function FinancialControl() {
             </h2>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl flex items-center justify-center h-full">
-            {/* Dashboard Interface Image */}
-            <Image
-              src={Dashboard}
-              alt="Dashboard Interface"
-              width={800}
-              height={600}
-              className="w-full h-full object-cover rounded-xl shadow-sm"
-            />
+            <div className="bg-gradient-to-r from-diverse-pink to-diverse-yellow p-0.5 rounded-2xl shadow-2xl flex items-center justify-center h-full">
+            <div className="bg-gray-50 rounded-2xl w-full h-full flex items-center justify-center">
+              {/* Dashboard Interface Image */}
+              <Image
+                src={dashboard}
+                alt="Dashboard Interface"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover rounded-xl shadow-sm"
+              />
+            </div>
           </div>
         </div>
 

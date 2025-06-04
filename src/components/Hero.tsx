@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import CardGradient from "../../public/cards/gradientCard.png"
 import CardZebra from "../../public/cards/zebraCard.png"
+import NoiseOverlay from "./NoiseOverlay"
 
 interface HeroProps {
   openModal: () => void
@@ -84,6 +85,7 @@ export default function Hero({ openModal }: HeroProps) {
           />
         </motion.div>
       </div>
+      <NoiseOverlay opacity={0.42} />
     </section>
   )
 }

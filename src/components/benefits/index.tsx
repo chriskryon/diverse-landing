@@ -33,6 +33,7 @@ export default function Benefits() {
                 alt="iPhone Mockup" 
                 width={300} 
                 height={600} 
+                z-index={999}
                 className="-rotate-20 shadow-2xl mx-auto" 
               />
             </div>
