@@ -16,37 +16,35 @@ export default function Navigation({ openModal }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        {/* Desktop Navigation with logo left-aligned */}
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            {/* Desktop Logo */}
+          {/* Logo - aligned to left at the start */}
+          <div className="flex-none">
             <div className="hidden md:block">
               <LogoDiverse height={32} />
             </div>
-            
-            {/* Mobile Logo */}
             <div className="block md:hidden">
               <LogoDiverseNoText height={32} />
             </div>
           </div>
 
-          {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-8 ml-4 self-end">
+              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               CREDIT
-            </a>
-            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
+              </a>
+              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               DEBIT
-            </a>
-            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
+              </a>
+              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               APP
-            </a>
-            <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
+              </a>
+              <a href="#" className="text-sm lg:text-base text-white hover:text-pink-500 transition-colors font-medium">
               API's
-            </a>
-          </div>
+              </a>
+            </div>
 
-          {/* CTA Button - Desktop */}
+          {/* CTA Button */}
           <div className="hidden md:block">
             <button
               type="button"
@@ -56,7 +54,7 @@ export default function Navigation({ openModal }: NavigationProps) {
             </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu controls */}
           <div className="md:hidden flex items-center">
             <button
               type="button"

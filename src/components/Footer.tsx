@@ -55,10 +55,10 @@ export default function Footer() {
         </div>
 
         {/* Contact Info & Copyright - Versão mais clean e responsiva */}
-        <div className="border-t border-gray-300 pt-8">
+        <div className="border-t border-gray-300 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center self-start">
               <LogoDiverse fill="black" height={32} />
             </div>
             

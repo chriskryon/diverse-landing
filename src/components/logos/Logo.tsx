@@ -2,7 +2,7 @@ import type * as React from "react";
 
 const LogoDiverse = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={428}
+    width={150}
     height={95}
     viewBox="0 0 428 95"
     fill="none"
