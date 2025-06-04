@@ -1,6 +1,6 @@
 "use client"
 import ApiSection from "@/components/ApiSection"
-import Benefits from "@/components/Benefits"
+import Benefits from "@/components/benefits"
 import CTAModal from "@/components/CallToAction"
 import FinancialControl from "@/components/FinancialControl"
 import Footer from "@/components/Footer"

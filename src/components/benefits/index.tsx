@@ -2,81 +2,15 @@
 import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
-import RendimentoPayLogo from "./logos/LogoRendimentoPay"
-import PJIcon from "./icons/PJ"
-import CreditCardIcon from "./icons/CreditCard"
-import GeneralIcon from "./icons/General"
-import ExclusiveProductsIcon from "./icons/ExclusiveProducts"
-import BetaVersionIcon from "./icons/BetaVersion"
-import PixIcon from "./icons/Pix"
-import PayAndReceiveIcon from "./icons/PayAndReceive"
-import TransferIcon from "./icons/Transfer"
-import InsuranceIcon from "./icons/Insurance"
+import RendimentoPayLogo from "../logos/LogoRendimentoPay"
 import AppOnIphone from "../../public/app.png"
+import { benefits, features } from "./data"
 
 export default function Benefits() {
-  // Estado para controlar qual card está com hover
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  // Define gradient border style for hover state com box-border para manter as dimensões
   const hoverGradientBorder = "hover:border-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-400 hover:p-[2px]";
   
-  const benefits = [
-    {
-      icon: GeneralIcon,
-      title: "Para Geral",
-      text: "Trazemos a diversidade para o centro, formando serviços acolhedores para todo mundo.",
-      color: "text-yellow-400",
-    },
-    {
-      icon: PJIcon,
-      title: "Conta Pessoa Jurídica",
-      text: "te falei? também ofereço a modalidade de conta jurídica.",
-      color: "text-pink-500",
-    },
-    {
-      icon: ExclusiveProductsIcon,
-      title: "Produtos Exclusivos",
-      text: "Em breve, vou trazer produtos exclusivos para te ajudar no dia a dia.",
-      color: "text-yellow-400",
-    },
-    {
-      icon: BetaVersionIcon,
-      title: "Versão Beta",
-      text: "Estou na minha primeira versão, valeu por estar aqui e me ajudar a melhorar.",
-      color: "text-pink-500",
-    },
-    {
-      icon: CreditCardIcon,
-      title: "Cartão de Crédito",
-      text: "Ainda estou preparando um cartão de crédito mara.",
-      color: "text-yellow-400",
-    },
-  ]
-
-  const features = [
-    {
-      icon: PixIcon,
-      text: "Área Pix",
-      color: "text-yellow-400",
-    },
-    {
-      icon: PayAndReceiveIcon,
-      text: "Pagar e Receber",
-      color: "text-pink-500",
-    },
-    {
-      icon: TransferIcon,
-      text: "Transferir",
-      color: "text-yellow-400",
-    },
-    {
-      icon: InsuranceIcon,
-      text: "Seguros",
-      color: "text-yellow-400",
-    },
-  ]
-
   return (
     <section className="bg-gray-900 py-20 px-6 overflow-x-hidden w-full box-border">
       <div className="max-w-6xl mx-auto box-border">
