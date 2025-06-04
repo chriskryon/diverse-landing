@@ -1,10 +1,11 @@
 "use client"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { useRef, useEffect, useState } from "react"
 import CardGradient from "../../public/cards/gradientCard.png"
 import CardZebra from "../../public/cards/zebraCard.png"
 import NoiseOverlay from "./NoiseOverlay"
+import { useHeroAnimations } from "@/hooks/useHeroAnimations"
 
 interface HeroProps {
   openModal: () => void
@@ -12,22 +13,23 @@ interface HeroProps {
 
 export default function Hero({ openModal }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const { scrollY } = useScroll()
   const [isMounted, setIsMounted] = useState(false)
   
-  // Parallax effects based on scroll
-  const titleY = useTransform(scrollY, [0, 500], [0, 100])
-  const buttonOpacity = useTransform(scrollY, [0, 300], [1, 0])
-  const buttonScale = useTransform(scrollY, [0, 300], [1, 0.8])
-  
-  // For cards' parallax movement - updated for diagonal movement
-  const card1Y = useTransform(scrollY, [0, 500], [0, 200])
-  const card1X = useTransform(scrollY, [0, 500], [0, -150])
-  const card1Rotate = useTransform(scrollY, [0, 500], [-45, -65])
-  
-  const card2Y = useTransform(scrollY, [0, 500], [0, 250])
-  const card2X = useTransform(scrollY, [0, 500], [0, 200])
-  const card2Rotate = useTransform(scrollY, [0, 500], [34, 65])
+  // Get all animation configurations from custom hook, including mobile detection
+  const {
+    isMobile,
+    titleY,
+    buttonOpacity,
+    buttonScale,
+    card1Animations,
+    card2Animations,
+    textAnimations,
+    buttonAnimations,
+    cardHoverAnimations,
+    cardPulseAnimations,
+    borderAnimations,
+    mobileGlowAnimations
+  } = useHeroAnimations()
   
   // Mounting animation
   useEffect(() => {
@@ -40,43 +42,36 @@ export default function Hero({ openModal }: HeroProps) {
       <motion.div 
         className="text-center px-4 sm:px-6 pt-20 relative z-10 w-full"
         style={{ y: titleY }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        initial={textAnimations.container.initial}
+        animate={textAnimations.container.animate}
+        transition={textAnimations.container.transition}
       >
         <motion.h1 
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-6 sm:mb-8 max-w-4xl mx-auto break-words"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0,
-            transition: {
-              duration: 0.8,
-              ease: "easeOut",
-              delay: 0.2
-            } 
-          }}
+          className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-6 sm:mb-8 max-w-4xl mx-auto break-words"
+          initial={textAnimations.heading.initial}
+          animate={textAnimations.heading.animate}
+          transition={textAnimations.heading.transition}
         >
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            initial={textAnimations.line1.initial}
+            animate={textAnimations.line1.animate}
+            transition={textAnimations.line1.transition}
           >
             Diversidade é nosso <span className="font-bold">ativo</span>.
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            initial={textAnimations.line2.initial}
+            animate={textAnimations.line2.animate}
+            transition={textAnimations.line2.transition}
           >
             <span className="font-bold">Seu crescimento</span>,
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
+            initial={textAnimations.line3.initial}
+            animate={textAnimations.line3.animate}
+            transition={textAnimations.line3.transition}
           >
             nosso objetivo.
           </motion.div>
@@ -85,28 +80,18 @@ export default function Hero({ openModal }: HeroProps) {
         <motion.button
           type="button"
           onClick={openModal}
-          className="relative bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg overflow-hidden"
+          className="relative bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-4 sm:py-4 rounded-full font-medium text-lg sm:text-lg overflow-hidden z-20"
           style={{ opacity: buttonOpacity, scale: buttonScale }}
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0px 0px 20px rgba(249, 45, 158, 0.5)"
-          }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0,
-            transition: {
-              duration: 0.6,
-              delay: 1.4,
-              ease: "easeOut"
-            }
-          }}
+          whileHover={buttonAnimations.whileHover}
+          whileTap={buttonAnimations.whileTap}
+          initial={buttonAnimations.initial}
+          animate={buttonAnimations.animate}
+          transition={buttonAnimations.transition}
         >
           <motion.span
             className="absolute inset-0 bg-gradient-to-r from-diverse-yellow to-diverse-pink opacity-0 transition-opacity"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
+            initial={buttonAnimations.gradient.initial}
+            whileHover={buttonAnimations.gradient.whileHover}
           />
           <motion.span className="relative z-10">
             Explore
@@ -114,133 +99,83 @@ export default function Hero({ openModal }: HeroProps) {
         </motion.button>
       </motion.div>
 
-      {/* Credit Cards - Positioned like in reference image */}
+      {/* Credit Cards - Responsive positioning handled by the hook */}
       <div className="absolute inset-0 pointer-events-none w-full">
         {/* Card 1 */}
         <motion.div 
-          className="absolute bottom-16 left-4 sm:left-8 lg:left-24 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
-          style={{ 
-            y: card1Y,
-            x: card1X,
-            rotate: card1Rotate 
-          }}
-          initial={{ opacity: 0, x: -100, rotate: -60 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0, 
-            rotate: -45,
-            transition: {
-              opacity: { duration: 1, delay: 0.5 },
-              x: { duration: 1, delay: 0.5, type: "spring" },
-              rotate: { duration: 1, delay: 0.5 },
-            }
-          }}
-          whileHover={{ 
-            scale: 1.1,
-            rotate: -30,
-            transition: { duration: 0.3 }
-          }}
+          className={isMobile ? 
+            "absolute top-24 left-4 scale-[0.65] origin-top-left" : 
+            "absolute bottom-16 left-4 sm:left-8 lg:left-24 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-top-left"
+          }
+          style={isMobile ? card1Animations.mobileStyle : card1Animations.style}
+          initial={card1Animations.initial}
+          animate={isMobile ? card1Animations.mobileAnimate : card1Animations.animate}
+          whileHover={cardHoverAnimations.card1}
         >
           <motion.div
-            animate={{
-              y: [0, -10, 0],
-              filter: [
-                "drop-shadow(0px 0px 10px rgba(249,45,158,0.3))",
-                "drop-shadow(0px 0px 30px rgba(249,45,158,0.7))",
-                "drop-shadow(0px 0px 10px rgba(249,45,158,0.3))"
-              ]
-            }}
-            transition={{
-              y: {
-                duration: 6,
-                ease: "easeInOut",
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "mirror"
-              },
-              filter: {
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }
-            }}
+            animate={cardPulseAnimations.card1.animate}
+            transition={cardPulseAnimations.card1.transition}
             className="relative"
           >
             <Image
               src={CardGradient}
               alt="Credit Card Gradient"
-              width={200}
-              height={200}
+              width={isMobile ? 230 : 200}
+              height={isMobile ? 230 : 200}
               className="transform rounded-2xl"
+              priority
             />
           </motion.div>
         </motion.div>
 
         {/* Card 2 */}
         <motion.div 
-          className="absolute bottom-10 sm:bottom-20 right-0 sm:right-16 lg:right-32 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-bottom-right"
-          style={{ 
-            y: card2Y,
-            x: card2X,
-            rotate: card2Rotate
-          }}
-          initial={{ opacity: 0, x: 100, rotate: 20 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0, 
-            rotate: 34,
-            transition: {
-              opacity: { duration: 1, delay: 0.8 },
-              x: { duration: 1, delay: 0.8, type: "spring" },
-              rotate: { duration: 1, delay: 0.8 },
-            }
-          }}
-          whileHover={{ 
-            scale: 1.1,
-            rotate: 40,
-            transition: { duration: 0.3 }
-          }}
+          className={isMobile ? 
+            "absolute bottom-28 right-8 scale-[0.65] origin-bottom-right" : 
+            "absolute bottom-10 sm:bottom-20 right-0 sm:right-16 lg:right-32 scale-50 sm:scale-75 md:scale-90 lg:scale-100 origin-bottom-right"
+          }
+          style={isMobile ? card2Animations.mobileStyle : card2Animations.style}
+          initial={card2Animations.initial}
+          animate={isMobile ? card2Animations.mobileAnimate : card2Animations.animate}
+          whileHover={cardHoverAnimations.card2}
         >
           <motion.div
-            animate={{
-              y: [0, 10, 0],
-              filter: [
-                "drop-shadow(0px 0px 10px rgba(249,200,99,0.3))",
-                "drop-shadow(0px 0px 30px rgba(249,200,99,0.7))",
-                "drop-shadow(0px 0px 10px rgba(249,200,99,0.3))"
-              ]
-            }}
-            transition={{
-              y: {
-                duration: 7,
-                ease: "easeInOut",
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "mirror"
-              },
-              filter: {
-                duration: 4,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }
-            }}
+            animate={cardPulseAnimations.card2.animate}
+            transition={cardPulseAnimations.card2.transition}
             className="relative"
           >
             <Image
               src={CardZebra}
               alt="Credit Card Zebra"
-              width={200}
-              height={200}
+              width={isMobile ? 230 : 200}
+              height={isMobile ? 230 : 200}
               className="transform rounded-2xl"
+              priority
             />
           </motion.div>
         </motion.div>
       </div>
 
+      {/* Mobile-only decorative elements */}
+      {isMobile && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div 
+            className="absolute top-[60%] left-[50%] w-[180px] h-[180px] rounded-full bg-diverse-pink opacity-10 blur-[70px]"
+            animate={mobileGlowAnimations.animate}
+            transition={{
+              ...mobileGlowAnimations.transition,
+              repeatType: mobileGlowAnimations.transition?.repeatType as "loop" | "reverse" | "mirror" | undefined
+            }}
+          />
+        </div>
+      )}
+
       {/* Animated gradient border */}
       <motion.div 
         className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
+        initial={borderAnimations.initial}
+        animate={borderAnimations.animate}
+        transition={borderAnimations.transition}
       >
         <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-diverse-pink to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-diverse-yellow to-transparent" />
