@@ -54,26 +54,29 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Contact Info */}
+        {/* Contact Info & Copyright - Versão mais clean e responsiva */}
         <div className="border-t border-gray-300 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-            <div className="flex items-center space-x-2">
-              <LogoDiverse  fill="black" height={40} />
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            {/* Logo */}
+            <div className="flex items-center">
+              <LogoDiverse fill="black" height={32} />
             </div>
-
-            <div className="space-y-2 lg:text-right">
-              <div className="flex items-center space-x-2">
+            
+            {/* Contato */}
+            <div className="flex flex-col items-center md:items-end space-y-3">
+              <a href="mailto:contato@diverse.com.vc" className="flex items-center space-x-2 hover:text-gray-600 transition-colors">
                 <Mail className="w-4 h-4" />
                 <span className="text-sm">contato@diverse.com.vc</span>
-              </div>
+              </a>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">São Paulo, SP, Brasil</span>
               </div>
+              
+              {/* Copyright - mudado para ficar junto do contato */}
+              <div className="text-xs text-gray-500 mt-4">© 2025 Diverse LTDA. Todos os direitos reservados.</div>
             </div>
           </div>
-
-          <div className="mt-8 text-center text-sm text-gray-500">© 2025 Diverse LTDA.</div>
         </div>
       </div>
     </footer>
