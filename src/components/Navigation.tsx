@@ -49,7 +49,8 @@ export default function Navigation({ openModal }: NavigationProps) {
             <button
               type="button"
               onClick={openModal}
-              className="bg-gradient-to-r from-diverse-yellow to-diverse-pink text-black px-4 lg:px-6 py-2 rounded-full font-medium transition-colors duration-300 hover:from-diverse-pink hover:to-diverse-yellow hover:opacity-90 text-sm lg:text-base">
+              className="bg-diverse-yellow text-black px-4 lg:px-6 py-2 rounded-full font-medium transition-opacity duration-300 hover:opacity-80 text-sm lg:text-base"
+            >
               ENTRAR NA LISTA DE ESPERA
             </button>
           </div>
@@ -59,7 +60,7 @@ export default function Navigation({ openModal }: NavigationProps) {
             <button
               type="button"
               onClick={openModal}
-              className="mr-4 bg-gradient-to-r from-diverse-yellow to-diverse-pink text-black px-3 py-1 rounded-full font-medium hover:bg-gradient-to-r hover:from-diverse-pink hover:to-diverse-yellow hover:opacity-90 transition-all text-xs">
+              className="mr-4 bg-diverse-yellow text-black px-3 py-1 rounded-full font-medium transition-opacity duration-300 hover:opacity-80 text-xs">
               CADASTRAR
             </button>
             <button 
