@@ -6,6 +6,7 @@ import FinancialControl from "@/components/FinancialControl"
 import Footer from "@/components/Footer"
 import Hero from "@/components/Hero"
 import Navigation from "@/components/Navigation"
+import NoiseOverlay from "@/components/NoiseOverlay"
 import { useState } from "react"
 
 export default function DiversePage() {
@@ -41,6 +42,8 @@ export default function DiversePage() {
       <Footer />
 
       <CTAModal isOpen={isModalOpen} onClose={closeModal} />
+      
+      <NoiseOverlay opacity={0.72} />
     </div>
   )
 }
