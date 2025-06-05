@@ -79,7 +79,7 @@ export default function Hero({ openModal }: HeroProps) {
         <motion.button
           type="button"
           onClick={openModal}
-          className="relative bg-gradient-to-r from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-4 sm:py-4 rounded-full font-medium text-lg sm:text-lg overflow-hidden z-20"
+          className="relative bg-gradient-to-l from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-4 sm:py-4 rounded-full font-medium text-lg sm:text-lg overflow-hidden z-20"
           style={{ opacity: buttonOpacity, scale: buttonScale }}
           whileHover={buttonAnimations.whileHover}
           whileTap={buttonAnimations.whileTap}
