@@ -119,6 +119,15 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer utilities {
+  .bg-gradient-to-r {
+    background-image: -webkit-linear-gradient(left, var(--tw-gradient-stops));
+    background-image: -moz-linear-gradient(left, var(--tw-gradient-stops));
+    background-image: -o-linear-gradient(left, var(--tw-gradient-stops));
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+}
+
 @layer base {
   /* * {
     @apply border-border outline-ring/50;
