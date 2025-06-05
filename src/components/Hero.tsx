@@ -88,7 +88,7 @@ export default function Hero({ openModal }: HeroProps) {
           transition={buttonAnimations.transition}
         >
           <motion.span
-            className="absolute inset-0 bg-gradient-to-r from-diverse-yellow to-diverse-pink opacity-0 transition-opacity"
+            className="absolute inset-0 bg-gradient-to-l from-diverse-yellow to-diverse-pink opacity-0 transition-opacity"
             initial={buttonAnimations.gradient.initial}
             whileHover={buttonAnimations.gradient.whileHover}
           />
