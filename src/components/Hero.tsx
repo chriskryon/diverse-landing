@@ -79,7 +79,7 @@ export default function Hero({ openModal }: HeroProps) {
         <motion.button
           type="button"
           onClick={openModal}
-          className="relative bg-gradient-to-l from-diverse-pink to-diverse-yellow text-black px-8 sm:px-12 py-4 sm:py-4 rounded-full font-medium text-lg sm:text-lg overflow-hidden z-20"
+          className="relative bg-diverse-yellow text-black px-8 sm:px-12 py-4 sm:py-4 rounded-full font-medium text-lg sm:text-lg overflow-hidden z-20 transition-colors duration-300 hover:bg-diverse-yellow/80"
           style={{ opacity: buttonOpacity, scale: buttonScale }}
           whileHover={buttonAnimations.whileHover}
           whileTap={buttonAnimations.whileTap}
@@ -88,7 +88,7 @@ export default function Hero({ openModal }: HeroProps) {
           transition={buttonAnimations.transition}
         >
           <motion.span
-            className="absolute inset-0 bg-gradient-to-l from-diverse-yellow to-diverse-pink opacity-0 transition-opacity"
+            className="absolute inset-0 bg-diverse-yellow opacity-0 transition-opacity"
             initial={buttonAnimations.gradient.initial}
             whileHover={buttonAnimations.gradient.whileHover}
           />
@@ -194,10 +194,10 @@ export default function Hero({ openModal }: HeroProps) {
         animate={borderAnimations.animate}
         transition={borderAnimations.transition}
       >
-        <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-diverse-pink to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-diverse-yellow to-transparent" />
-        <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-diverse-pink to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-diverse-yellow to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[1px] bg-diverse-pink" />
+        <div className="absolute inset-x-0 bottom-0 h-[1px] bg-diverse-yellow" />
+        <div className="absolute inset-y-0 left-0 w-[1px] bg-diverse-pink" />
+        <div className="absolute inset-y-0 right-0 w-[1px] bg-diverse-yellow" />
       </motion.div>
 
       <NoiseOverlay opacity={0.42} />

@@ -137,6 +137,6 @@ export function useBenefitsAnimations() {
     mobileAnimations,
     desktopAnimations,
     featuresAnimations,
-    hoverGradientBorder: "hover:border-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-400 hover:p-[2px]"
+    hoverGradientBorder: "hover:border-transparent hover:bg-diverse-pink hover:p-[2px]"
   };
 }

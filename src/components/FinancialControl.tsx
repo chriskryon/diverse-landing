@@ -33,7 +33,7 @@ export default function FinancialControl() {
 
           {/* Dashboard Image */}
           <motion.div 
-            className="bg-gradient-to-r from-diverse-pink to-diverse-yellow p-0.5 rounded-2xl shadow-2xl flex items-center justify-center h-full"
+            className="bg-diverse-yellow p-0.5 rounded-2xl shadow-2xl flex items-center justify-center h-full"
             ref={imageAnimations.ref}
             initial="hidden"
             animate={imageAnimations.controls}
@@ -54,7 +54,7 @@ export default function FinancialControl() {
 
         {/* Info Box */}
         <motion.div 
-          className="mt-4 bg-gray-900 text-white p-8 rounded-2xl"
+          className="mt-4 bg-[#101828] text-white p-8 rounded-2xl"
           ref={textBoxAnimations.ref}
           initial={textBoxAnimations.initial}
           animate={textBoxAnimations.controls}
