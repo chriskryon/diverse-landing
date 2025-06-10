@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
 	darkMode: "class",
@@ -19,6 +20,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				...colors,
 				yellow: "var(--yellow)",
 				pink: "var(--pink)",
 				background: "hsl(var(--background))",
