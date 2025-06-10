@@ -50,18 +50,45 @@ export function useBenefitsAnimations() {
   const mobileAnimations = {
     ref: mobileAnimation.ref,
     controls: mobileAnimation.controls,
-    container: containerVariants,
-    item: itemVariants,
-    card: (index: number) => ({
-      hidden: { x: index % 2 === 0 ? -30 : 30, y: 20, opacity: 0 },
+    container: {
+      hidden: { opacity: 0 },
       visible: {
-        x: 0,
-        y: 0,
         opacity: 1,
-        transition: { 
-          duration: 0.6, 
-          delay: 0.1 * index,
-          ease: "easeOut"
+        transition: {
+          duration: 0.8,
+          staggerChildren: 0.15,
+          delayChildren: 0.3
+        }
+      }
+    },
+    item: {
+      hidden: { 
+        opacity: 0,
+        scale: 0.95
+      },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+          duration: 0.6,
+          ease: [0.25, 0.46, 0.45, 0.94]
+        }
+      }
+    },
+    card: (index: number) => ({
+      hidden: { 
+        opacity: 0,
+        y: 30,
+        scale: 0.95
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          duration: 0.5,
+          delay: index * 0.1,
+          ease: [0.25, 0.46, 0.45, 0.94]
         }
       }
     })
@@ -140,9 +167,6 @@ export function useBenefitsAnimations() {
       transition: { delay: i * 0.1, duration: 0.5 }
     }),
     featureHover: { 
-      scale: 1.07, 
-      y: -10, 
-      boxShadow: "0 12px 40px rgba(249,45,158,0.2)",
       borderColor: "rgba(249,45,158,1)"
     },
     featureTransition: { 

@@ -60,7 +60,8 @@ export default function Navigation({ openModal }: NavigationProps) {
               onClick={openModal}
               className="bg-diverse-yellow text-black px-5 lg:px-7 py-2.5 rounded-full font-semibold transition-all duration-300 hover:bg-diverse-yellow/90 hover:scale-105 text-sm lg:text-base shadow-lg hover:shadow-diverse-yellow/20"
             >
-              ENTRAR NA LISTA DE ESPERA
+              <span className="lg:hidden">CADASTRAR</span>
+              <span className="hidden lg:inline">ENTRAR NA LISTA DE ESPERA</span>
             </button>
           </div>
 

@@ -197,25 +197,25 @@ export default function Benefits() {
             })}
           </motion.div>
           
-          <div className="flex justify-center" style={{ boxSizing: "border-box" }}>
+          <div className="w-full flex justify-center" style={{ boxSizing: "border-box" }}>
             <div 
-              className="grid grid-cols-2 md:grid-cols-3 lg:auto-cols-auto lg:grid-flow-col gap-4 items-center w-fit"
+              className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 place-items-center"
               onMouseLeave={() => setHoveredFeature(null)}
             >
               {features.map((item, i) => (
                 <motion.div
                   key={`rendimento-benefit-${i}`}
-                  className="rounded-xl group transition-all duration-300"
+                  className="rounded-xl group transition-all duration-300 flex justify-center"
                   style={{ boxSizing: "border-box" }}
                   {...featuresAnimations.featureItem(i)}
                   onMouseEnter={() => setHoveredFeature(i)}
                   whileHover={featuresAnimations.featureHover}
                 >
-                  <div className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-diverse-pink/70 group-hover:border-diverse-pink aspect-square cursor-pointer p-6 min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] transition-all duration-300">
-                    <div className="w-10 h-10 flex items-center justify-center mb-2">
-                      <item.icon className={`w-10 h-10 ${item.color}`} />
+                  <div className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-diverse-pink/70 group-hover:border-diverse-pink aspect-square cursor-pointer p-4 w-32 h-32 transition-all duration-300">
+                    <div className="w-8 h-8 flex items-center justify-center mb-2">
+                      <item.icon className={`w-8 h-8 ${item.color}`} />
                     </div>
-                    <span className="text-black text-xs font-medium text-center">{item.text}</span>
+                    <span className="text-black text-xs font-medium text-center leading-tight">{item.text}</span>
                   </div>
                 </motion.div>
               ))}
