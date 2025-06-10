@@ -1,4 +1,4 @@
-import { Download, DownloadIcon, Mail, MapPin, Smartphone } from "lucide-react"
+import { DownloadIcon, Mail, MapPin } from "lucide-react"
 import LogoDiverse from "./logos/Logo"
 
 export default function Footer() {
