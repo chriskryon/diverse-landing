@@ -10,41 +10,41 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-50 text-black py-10 px-6 overflow-x-hidden w-full">
+    <footer className="bg-gray-100 text-zinc-900 py-16 px-6 overflow-x-hidden w-full">
       <div className="max-w-6xl mx-auto">
         {/* Join Section */}
-        <div className="text-center mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-10 leading-tight tracking-tight text-gray-900">
-            Sua vida financeira,  <span className="underline decoration-wavy decoration-2 decoration-pink-400">seu jeito.</span>
+        <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-zinc-900">
+            Descubra uma nova forma de gerenciar seu dinheiro com praticidade e segurança
             </h2>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
-            <button className="flex items-center space-x-4 bg-black text-white px-8 py-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg group">
-              <DownloadIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <button className="flex items-center space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors">
+              <DownloadIcon className="w-6 h-6" />
               <div className="text-left">
-                <div className="text-sm opacity-80">Em breve na</div>
-                <div className="font-semibold text-lg">App Store</div>
+                <div className="text-xs">Em breve na</div>
+                <div className="font-medium">App Store</div>
               </div>
             </button>
-            <button className="flex items-center space-x-4 bg-black text-white px-8 py-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg group">
-              <DownloadIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
+            <button className="flex items-center space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors">
+              <DownloadIcon className="w-6 h-6" />
               <div className="text-left">
-                <div className="text-sm opacity-80">Em breve no</div>
-                <div className="font-semibold text-lg">Google Play</div>
+                <div className="text-xs">Em breve no</div>
+                <div className="font-medium">Google Play</div>
               </div>
             </button>
           </div>
         </div>
 
         {/* Footer Links */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-bold mb-6 text-lg text-gray-900">{category}</h3>
-              <ul className="space-y-3">
+              <h3 className="font-bold mb-4 text-zinc-900">{category}</h3>
+              <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:translate-x-1 inline-block">
+                    <a href="#" className="text-zinc-600 hover:text-zinc-900 transition-colors">
                       {link}
                     </a>
                   </li>
@@ -56,24 +56,25 @@ export default function Footer() {
 
         {/* Contact Info & Copyright */}
         <div className="border-t border-gray-200 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
             {/* Logo */}
-            <div className="flex items-center self-start transition-transform hover:scale-105 duration-200">
-              <LogoDiverse fill="black" height={36} />
+            <div className="flex items-center self-start">
+              <LogoDiverse fill="#18181b" height={32} />
             </div>
             
             {/* Contato */}
-            <div className="flex flex-col items-center md:items-end space-y-4">
-              <a href="mailto:contato@diverse.com.vc" className="flex items-center space-x-3 text-gray-900 hover:text-gray-600 transition-all duration-300 hover:scale-105 group">
-                <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
-                <span className="text-base font-medium">contato@diverse.com.vc</span>
+            <div className="flex flex-col items-center md:items-end space-y-3">
+              <a href="mailto:contato@diverse.com.vc" className="flex items-center space-x-2 text-zinc-900 hover:text-zinc-600 transition-colors">
+                <Mail className="w-4 h-4" />
+                <span className="text-sm">contato@diverse.com.vc</span>
               </a>
-              <div className="flex items-center space-x-3 text-gray-900 group">
-                <MapPin className="w-5 h-5 transition-transform group-hover:scale-110" />
-                <span className="text-base">São Paulo, SP, Brasil</span>
+              <div className="flex items-center space-x-2 text-zinc-900">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm">São Paulo, SP, Brasil</span>
               </div>
               
-              <div className="text-sm text-gray-500 mt-6">© 2025 Diverse LTDA. Todos os direitos reservados.</div>
+              {/* Copyright - mudado para ficar junto do contato */}
+              <div className="text-xs text-zinc-500 mt-4">© 2025 Diverse LTDA. Todos os direitos reservados.</div>
             </div>
           </div>
         </div>

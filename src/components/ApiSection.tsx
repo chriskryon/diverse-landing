@@ -46,7 +46,7 @@ export default function ApiSection() {
             <motion.div
               key={benefit.id}
               variants={benefitsAnimations.item}
-              className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)] text-gray-900"
+              className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)]"
               animate={{
                 opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
                 filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
