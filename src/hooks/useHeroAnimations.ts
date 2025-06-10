@@ -68,7 +68,7 @@ export function useHeroAnimations() {
   const buttonAnimations = {
     whileHover: { 
       scale: 1.05,
-      boxShadow: "0px 0px 20px rgba(249, 45, 158, 0.5)"
+      boxShadow: "0px 4px 24px rgba(249, 45, 158, 0.4)"
     },
     whileTap: { scale: 0.95 },
     initial: { opacity: 0, y: 30 },
@@ -77,10 +77,6 @@ export function useHeroAnimations() {
       duration: 0.6,
       delay: 1.4,
       ease: "easeOut"
-    },
-    gradient: {
-      initial: { opacity: 0 },
-      whileHover: { opacity: 1 }
     }
   };
 
@@ -173,10 +169,10 @@ export function useHeroAnimations() {
     card1: {
       animate: {
         y: [0, -10, 0],
-        filter: [
-          "drop-shadow(0px 0px 10px rgba(249,45,158,0.3))",
-          "drop-shadow(0px 0px 30px rgba(249,45,158,0.7))",
-          "drop-shadow(0px 0px 10px rgba(249,45,158,0.3))"
+        boxShadow: [
+          "0px 4px 20px rgba(249,45,158,0.3)",
+          "0px 8px 40px rgba(249,45,158,0.6)",
+          "0px 4px 20px rgba(249,45,158,0.3)"
         ]
       },
       transition: {
@@ -186,7 +182,7 @@ export function useHeroAnimations() {
           repeat: Number.POSITIVE_INFINITY,
           repeatType: "mirror"
         },
-        filter: {
+        boxShadow: {
           duration: 3,
           repeat: Infinity,
           repeatType: "reverse"
@@ -196,10 +192,10 @@ export function useHeroAnimations() {
     card2: {
       animate: {
         y: [0, 10, 0],
-        filter: [
-          "drop-shadow(0px 0px 10px rgba(249,200,99,0.3))",
-          "drop-shadow(0px 0px 30px rgba(249,200,99,0.7))",
-          "drop-shadow(0px 0px 10px rgba(249,200,99,0.3))"
+        boxShadow: [
+          "0px 4px 20px rgba(249,200,99,0.3)",
+          "0px 8px 40px rgba(249,200,99,0.6)",
+          "0px 4px 20px rgba(249,200,99,0.3)"
         ]
       },
       transition: {
@@ -209,7 +205,7 @@ export function useHeroAnimations() {
           repeat: Number.POSITIVE_INFINITY,
           repeatType: "mirror"
         },
-        filter: {
+        boxShadow: {
           duration: 4,
           repeat: Infinity,
           repeatType: "reverse"
@@ -228,8 +224,8 @@ export function useHeroAnimations() {
   // Mobile-only glow animation
   const mobileGlowAnimations = {
     animate: {
-      scale: [1, 1.2, 1],
-      opacity: [0.05, 0.15, 0.05]
+      scale: [1, 1.15, 1],
+      opacity: [0.08, 0.2, 0.08]
     },
     transition: {
       duration: 8,

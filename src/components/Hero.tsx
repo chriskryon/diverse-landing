@@ -89,8 +89,8 @@ export default function Hero({ openModal }: HeroProps) {
         >
           <motion.span
             className="absolute inset-0 bg-diverse-yellow opacity-0 transition-opacity"
-            initial={buttonAnimations.gradient.initial}
-            whileHover={buttonAnimations.gradient.whileHover}
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 0.15 }}
           />
           <motion.span className="relative z-10">
             Explore

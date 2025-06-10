@@ -108,9 +108,8 @@ export function useBenefitsAnimations() {
         }
       }
     }),
-    // Fixed function with correct type for repeatType
     floatingAnimation: (index: number, isHovered: boolean) => ({
-      y: isHovered ? 0 : [0, -10, 0],
+      y: isHovered ? -5 : [0, -10, 0],
       scale: isHovered ? 1.03 : 1,
       transition: {
         duration: 4 + index * 0.5,
@@ -120,7 +119,8 @@ export function useBenefitsAnimations() {
       }
     }),
     hoverEffect: {
-      boxShadow: "0 8px 32px rgba(249,45,158,0.15)",
+      boxShadow: "0 12px 40px rgba(249,45,158,0.2)",
+      borderColor: "rgba(249,45,158,1)"
     }
   };
 
@@ -132,8 +132,9 @@ export function useBenefitsAnimations() {
     item: itemVariants,
     featureHover: { 
       scale: 1.07, 
-      y: -8, 
-      boxShadow: "0 8px 32px rgba(249,45,158,0.15)" 
+      y: -10, 
+      boxShadow: "0 12px 40px rgba(249,45,158,0.2)",
+      borderColor: "rgba(249,45,158,1)"
     },
     featureTransition: { 
       type: "spring", 
@@ -149,6 +150,6 @@ export function useBenefitsAnimations() {
     mobileAnimations,
     desktopAnimations,
     featuresAnimations,
-    hoverGradientBorder: "hover:border-transparent hover:bg-diverse-pink hover:p-[2px]"
+    hoverBorderEffect: "hover:border-diverse-pink hover:shadow-lg"
   };
 }

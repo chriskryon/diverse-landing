@@ -16,7 +16,7 @@ export function useApiSectionAnimations() {
       visible: { 
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.7 } 
+        transition: { duration: 0.8, ease: "easeOut" } 
       }
     }
   };
@@ -30,18 +30,25 @@ export function useApiSectionAnimations() {
       visible: {
         opacity: 1,
         transition: {
-          staggerChildren: 0.2,
-          delayChildren: 0.3
+          staggerChildren: 0.15,
+          delayChildren: 0.2
         }
       }
     },
     item: {
-      hidden: { opacity: 0, y: 20 },
+      hidden: { opacity: 0, y: 25, scale: 0.95 },
       visible: {
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.5, ease: "easeOut" }
+        scale: 1,
+        transition: { duration: 0.6, ease: "easeOut" }
       }
+    },
+    hover: {
+      y: -8,
+      scale: 1.02,
+      boxShadow: "0 12px 40px rgba(249,45,158,0.15)",
+      transition: { duration: 0.3 }
     }
   };
 
@@ -49,12 +56,13 @@ export function useApiSectionAnimations() {
   const codeBlockAnimations = {
     ref: codeBlockAnimation.ref,
     controls: codeBlockAnimation.controls,
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 30, scale: 0.95 },
     variants: {
       visible: { 
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.7 } 
+        scale: 1,
+        transition: { duration: 0.8, ease: "easeOut" } 
       }
     }
   };
@@ -68,7 +76,7 @@ export function useApiSectionAnimations() {
       visible: { 
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.7 } 
+        transition: { duration: 0.8, delay: 0.2, ease: "easeOut" } 
       }
     }
   };

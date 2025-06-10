@@ -33,20 +33,20 @@ export default function FinancialControl() {
 
           {/* Dashboard Image */}
           <motion.div 
-            className="bg-diverse-yellow p-0.5 rounded-2xl shadow-2xl flex items-center justify-center h-full"
+            className="bg-diverse-yellow p-1 rounded-2xl shadow-xl flex items-center justify-center h-full border-2 border-transparent"
             ref={imageAnimations.ref}
             initial="hidden"
             animate={imageAnimations.controls}
             variants={imageAnimations.container}
             whileHover={imageAnimations.hover}
           >
-            <div className="bg-gray-50 rounded-2xl w-full h-full flex items-center justify-center">
+            <div className="bg-gray-50 rounded-xl w-full h-full flex items-center justify-center">
               <Image
                 src={dashboard}
                 alt="Dashboard Interface"
                 width={1280}
                 height={600}
-                className="w-full h-full object-cover rounded-xl shadow-sm"
+                className="w-full h-full object-cover rounded-lg shadow-sm"
               />
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ export default function FinancialControl() {
 
         {/* Info Box */}
         <motion.div 
-          className="mt-4 bg-[#101828] text-white p-8 rounded-2xl"
+          className="mt-6 bg-[#101828] text-white p-8 rounded-2xl border border-gray-700 shadow-xl"
           ref={textBoxAnimations.ref}
           initial={textBoxAnimations.initial}
           animate={textBoxAnimations.controls}

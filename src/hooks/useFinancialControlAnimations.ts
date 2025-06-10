@@ -47,7 +47,8 @@ export function useFinancialControlAnimations() {
       }
     },
     hover: { 
-      scale: 1.02, 
+      scale: 1.02,
+      boxShadow: "0 12px 40px rgba(249,200,99,0.3)",
       transition: { duration: 0.3 } 
     }
   };
@@ -67,8 +68,9 @@ export function useFinancialControlAnimations() {
       }
     },
     hover: { 
-      y: -5, 
-      boxShadow: "0 10px 30px rgba(249,45,158,0.2)",
+      y: -8, 
+      boxShadow: "0 16px 40px rgba(249,45,158,0.25)",
+      backgroundColor: "#0f172a",
       transition: { duration: 0.3 }
     }
   };

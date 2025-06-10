@@ -15,7 +15,7 @@ export default function Benefits() {
     mobileAnimations,
     desktopAnimations,
     featuresAnimations,
-    hoverGradientBorder
+    hoverBorderEffect
   } = useBenefitsAnimations();
   
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
@@ -25,7 +25,7 @@ export default function Benefits() {
       id: 'rendimento-pay',
       component: RendimentoPayLogo,
       height: 60
-    }
+    },
   ];
   
   return (
@@ -81,11 +81,11 @@ export default function Benefits() {
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={`mobile-benefit-${benefit.title}`}
-                  className={`bg-white rounded-xl ${hoverGradientBorder} transition-all duration-300 group`}
+                  className={`bg-white rounded-xl shadow-lg transition-all duration-300 group border-2 border-diverse-pink/70 hover:border-diverse-pink hover:shadow-xl`}
                   variants={mobileAnimations.card(index)}
                   custom={index}
                 >
-                  <div className="p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent bg-white">
+                  <div className="p-4 rounded-xl flex items-start space-x-4">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                       <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
                     </div>
@@ -112,13 +112,13 @@ export default function Benefits() {
               {benefits.slice(0, 3).map((benefit, index) => (
                 <motion.div
                   key={`desktop-left-benefit-${benefit.title}`}
-                  className={`rounded-xl group ${hoverGradientBorder}`}
+                  className="rounded-xl group transition-all duration-300"
                   variants={desktopAnimations.leftCard(index)}
                   animate={desktopAnimations.floatingAnimation(index, hoveredCard === index)}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent">
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-diverse-pink/70 group-hover:border-diverse-pink group-hover:shadow-xl transition-all duration-300">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                       <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
                     </div>
@@ -150,13 +150,13 @@ export default function Benefits() {
               {benefits.slice(3).map((benefit, index) => (
                 <motion.div
                   key={`desktop-right-benefit-${benefit.title}`}
-                  className={`rounded-xl group ${hoverGradientBorder}`}
+                  className="rounded-xl group transition-all duration-300"
                   variants={desktopAnimations.rightCard(index)}
                   animate={desktopAnimations.floatingAnimation(index + 3, hoveredCard === index + 3)}
                   onMouseEnter={() => setHoveredCard(index + 3)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent">
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-diverse-pink/70 group-hover:border-diverse-pink group-hover:shadow-xl transition-all duration-300">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                       <benefit.icon className={`w-10 h-10 ${benefit.color}`} />
                     </div>
@@ -209,14 +209,15 @@ export default function Benefits() {
               {features.map((item, i) => (
                 <motion.div
                   key={`rendimento-benefit-${i}`}
-                  className={`rounded-xl group ${hoverGradientBorder}`}
+                  className="rounded-xl group transition-all duration-300"
                   style={{ boxSizing: "border-box" }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: hoveredFeature !== null && hoveredFeature !== i ? 0.3 : 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   onMouseEnter={() => setHoveredFeature(i)}
+                  whileHover={featuresAnimations.featureHover}
                 >
-                  <div className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent aspect-square cursor-pointer p-6 min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px]">
+                  <div className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-diverse-pink/70 group-hover:border-diverse-pink aspect-square cursor-pointer p-6 min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] transition-all duration-300">
                     <div className="w-10 h-10 flex items-center justify-center mb-2">
                       <item.icon className={`w-10 h-10 ${item.color}`} />
                     </div>
