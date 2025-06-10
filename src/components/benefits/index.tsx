@@ -20,6 +20,14 @@ export default function Benefits() {
   
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   
+  const companyLogos = [
+    {
+      id: 'rendimento-pay',
+      component: RendimentoPayLogo,
+      height: 60
+    }
+  ];
+  
   return (
     <section id="benefits" className="bg-gray-900 py-20 px-6 overflow-x-hidden w-full box-border">
       <div className="max-w-6xl mx-auto box-border">
@@ -172,8 +180,25 @@ export default function Benefits() {
           animate={featuresAnimations.controls}
           variants={featuresAnimations.container}
         >
-          <motion.div variants={featuresAnimations.item}>
-            <RendimentoPayLogo height={80} className="mx-auto mb-8" />
+          {/* Logos das Empresas */}
+          <motion.div 
+            variants={featuresAnimations.item}
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 mb-8"
+          >
+            {companyLogos.map((logo, index) => {
+              const LogoComponent = logo.component;
+              return (
+                <motion.div
+                  key={logo.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105"
+                >
+                  <LogoComponent height={logo.height} />
+                </motion.div>
+              );
+            })}
           </motion.div>
           
           <div className="flex justify-center" style={{ boxSizing: "border-box" }}>

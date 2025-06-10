@@ -71,7 +71,19 @@ export function useBenefitsAnimations() {
     ref: desktopAnimation.ref,
     controls: desktopAnimation.controls,
     container: containerVariants,
-    image: itemVariants,
+    image: {
+      hidden: { x: 0, opacity: 0, scale: 0.9 },
+      visible: {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        transition: { 
+          duration: 0.8, 
+          delay: 0.2,
+          ease: "easeOut"
+        }
+      }
+    },
     leftCard: (index: number) => ({
       hidden: { x: -40, opacity: 0 },
       visible: {
@@ -79,7 +91,7 @@ export function useBenefitsAnimations() {
         opacity: 1,
         transition: { 
           duration: 0.6, 
-          delay: 0.15 * index,
+          delay: 0.8 + (0.15 * index),
           ease: "easeOut"
         }
       }
@@ -91,7 +103,7 @@ export function useBenefitsAnimations() {
         opacity: 1,
         transition: { 
           duration: 0.6, 
-          delay: 0.15 * index,
+          delay: 0.8 + (0.15 * index),
           ease: "easeOut"
         }
       }
