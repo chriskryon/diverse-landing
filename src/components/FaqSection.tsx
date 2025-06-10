@@ -61,15 +61,11 @@ export default function FaqSection() {
           ref={headerAnimation.ref}
           initial={headerAnimation.initial}
           animate={headerAnimation.animate}
-          className="text-black faq-text text-center mb-12 lg:hidden"
+          className="text-center mb-12 lg:hidden"
         >
-          <h2 className="faq-text text-4xl lg:text-5xl font-bold mb-4 ">
+          <h2 className="text-diverse-pink text-4xl lg:text-5xl font-bold mb-4 ">
             FAQ
           </h2>
-          <p className="faq-text text-xl max-w-3xl mx-auto leading-relaxed text-justify">
-            Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros. 
-            Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.
-          </p>
         </motion.div>
 
         <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
@@ -78,15 +74,12 @@ export default function FaqSection() {
             ref={headerAnimation.ref}
             initial={headerAnimation.initial}
             animate={headerAnimation.animate}
-            className="text-black faq-text hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
+            className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
-              <h2 className="faq-text text-5xl xl:text-6xl font-bold  mb-6 leading-tight">
+              <h2 className="text-diverse-pink text-5xl xl:text-6xl font-bold  mb-6 leading-tight">
                 FAQ
               </h2>
-              <p className="faq-text text-xl leading-relaxed mb-8 text-justify">
-                Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
-              </p>
               <div className="w-20 h-1 bg-diverse-pink rounded-full"></div>
             </div>
           </motion.div>
