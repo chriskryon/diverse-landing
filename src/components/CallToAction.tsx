@@ -32,7 +32,8 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6"
+      style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
       onClick={handleBackdropClick}
     >
       <motion.div 
@@ -40,8 +41,12 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="relative p-4 sm:p-6 md:p-8 bg-black/80 backdrop-blur-md rounded-2xl shadow-xl w-full max-w-[90%] sm:max-w-sm md:max-w-md lg:max-w-lg m-auto border-2 border-[rgba(249,45,158,0.7)]"
-        style={{ maxHeight: 'calc(100vh - 40px)' }}
+        className="relative p-4 sm:p-6 md:p-8 bg-black sm:bg-black/90 rounded-2xl shadow-xl w-full max-w-[90%] sm:max-w-sm md:max-w-md lg:max-w-lg m-auto border-2 border-[rgba(249,45,158,0.7)]"
+        style={{ 
+          maxHeight: 'calc(100vh - 40px)',
+          backdropFilter: 'blur(12px)', 
+          WebkitBackdropFilter: 'blur(12px)' 
+        }}
       >
         <button 
           type='button'
