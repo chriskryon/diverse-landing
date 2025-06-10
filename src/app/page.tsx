@@ -7,6 +7,7 @@ import Footer from "@/components/Footer"
 import Hero from "@/components/Hero"
 import Navigation from "@/components/Navigation"
 import { useState } from "react"
+import FaqSection from "@/components/FaqSection"
 
 export default function DiversePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -36,6 +37,9 @@ export default function DiversePage() {
 
       {/* API */}
       <ApiSection />
+
+      {/* FAQ Section */}
+      <FaqSection />
 
       {/* Footer Section */}
       <Footer />
