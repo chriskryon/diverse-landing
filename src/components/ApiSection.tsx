@@ -46,7 +46,7 @@ export default function ApiSection() {
             <motion.div
               key={benefit.id}
               variants={benefitsAnimations.item}
-              className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)]"
+              className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)] text-gray-900"
               animate={{
                 opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
                 filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
@@ -55,8 +55,8 @@ export default function ApiSection() {
               onMouseEnter={() => setHoveredBenefit(benefit.id)}
             >
               <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-black">{benefit.title}</h3>
-              <p className="text-gray-700">{benefit.desc}</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">{benefit.title}</h3>
+              <p className="text-gray-600">{benefit.desc}</p>
             </motion.div>
           ))}
         </motion.div>

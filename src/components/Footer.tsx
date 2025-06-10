@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         {/* Join Section */}
         <div className="text-center mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-10 leading-tight tracking-tight">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-10 leading-tight tracking-tight text-gray-900">
             Sua vida financeira,  <span className="underline decoration-wavy decoration-2 decoration-pink-400">seu jeito.</span>
             </h2>
 
@@ -40,11 +40,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-bold mb-6 text-lg">{category}</h3>
+              <h3 className="font-bold mb-6 text-lg text-gray-900">{category}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-gray-600 hover:text-black transition-all duration-300 hover:translate-x-1 inline-block">
+                    <a href="#" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:translate-x-1 inline-block">
                       {link}
                     </a>
                   </li>
@@ -64,11 +64,11 @@ export default function Footer() {
             
             {/* Contato */}
             <div className="flex flex-col items-center md:items-end space-y-4">
-              <a href="mailto:contato@diverse.com.vc" className="flex items-center space-x-3 hover:text-gray-600 transition-all duration-300 hover:scale-105 group">
+              <a href="mailto:contato@diverse.com.vc" className="flex items-center space-x-3 text-gray-900 hover:text-gray-600 transition-all duration-300 hover:scale-105 group">
                 <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
                 <span className="text-base font-medium">contato@diverse.com.vc</span>
               </a>
-              <div className="flex items-center space-x-3 group">
+              <div className="flex items-center space-x-3 text-gray-900 group">
                 <MapPin className="w-5 h-5 transition-transform group-hover:scale-110" />
                 <span className="text-base">São Paulo, SP, Brasil</span>
               </div>
