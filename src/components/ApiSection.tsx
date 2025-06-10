@@ -55,8 +55,8 @@ export default function ApiSection() {
               onMouseEnter={() => setHoveredBenefit(benefit.id)}
             >
               <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">{benefit.title}</h3>
-              <p className="text-gray-600">{benefit.desc}</p>
+              <h3 className="text-xl font-semibold mb-2 text-[#181919]">{benefit.title}</h3>
+              <p className="text-[#181919]">{benefit.desc}</p>
             </motion.div>
           ))}
         </motion.div>
