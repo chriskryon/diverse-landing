@@ -63,10 +63,10 @@ export default function FaqSection() {
           animate={headerAnimation.animate}
           className="text-center mb-12 lg:hidden"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#18181b' }}>
             FAQ
           </h2>
-          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed text-justify">
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-justify" style={{ color: '#18181b' }}>
             Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros. 
             Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.
           </p>
@@ -81,10 +81,10 @@ export default function FaqSection() {
             className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
-              <h2 className="text-5xl xl:text-6xl font-bold text-black mb-6 leading-tight">
+              <h2 className="text-5xl xl:text-6xl font-bold  mb-6 leading-tight" style={{ color: '#18181b' }}>
                 FAQ
               </h2>
-              <p className="text-xl text-black leading-relaxed mb-8 text-justify">
+              <p className="text-xl leading-relaxed mb-8 text-justify" style={{ color: '#18181b' }}>
                 Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
               </p>
               <div className="w-20 h-1 bg-diverse-pink rounded-full"></div>
