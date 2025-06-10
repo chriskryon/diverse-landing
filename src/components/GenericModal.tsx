@@ -24,61 +24,82 @@ export default function GenericModal({ isOpen, onClose, title, children }: Gener
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6"
-      style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
       onClick={handleBackdropClick}
     >
       <motion.div 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="relative p-3 sm:p-5 bg-white rounded-2xl shadow-xl w-full max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-2xl m-auto border-2 border-diverse-pink"
+        initial={{ scale: 0.95, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.95, opacity: 0, y: 20 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="relative bg-white rounded-3xl shadow-2xl w-full max-w-[95%] sm:max-w-lg md:max-w-xl lg:max-w-2xl border-2 border-diverse-pink"
         style={{ 
-          maxHeight: 'calc(100vh - 40px)',
-          overflow: 'auto'
+          maxHeight: 'calc(100vh - 80px)',
+          overflow: 'hidden'
         }}
       >
-        <div className="flex justify-end mb-4">
+        {/* Header with close button */}
+        <div className="flex items-center justify-between p-6 pb-0">
+          <motion.h1
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight"
+          >
+            {title}
+          </motion.h1>
+          
           <button 
             type='button'
             onClick={onClose}
-            className="text-diverse-pink hover:text-diverse-pink/80 transition-colors text-xl font-bold"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-diverse-pink/10 hover:bg-diverse-pink/20 text-diverse-pink hover:text-diverse-pink transition-all duration-200 hover:scale-105 border border-diverse-pink/30"
             aria-label="Fechar"
           >
-            ✕
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
         
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-2"
-        >
-          {title}
-        </motion.h1>
-        
-        <div className="text-black leading-relaxed prose prose-sm max-w-none">
-          <ReactMarkdown
-            components={{
-              h1: ({children}) => <h1 className="text-2xl font-bold mb-4 text-black">{children}</h1>,
-              h2: ({children}) => <h2 className="text-xl font-bold mb-3 text-black">{children}</h2>,
-              h3: ({children}) => <h3 className="text-lg font-bold mb-2 text-black">{children}</h3>,
-              p: ({children}) => <p className="mb-3 text-black">{children}</p>,
-              ul: ({children}) => <ul className="list-disc pl-6 mb-3 text-black">{children}</ul>,
-              ol: ({children}) => <ol className="list-decimal pl-6 mb-3 text-black">{children}</ol>,
-              li: ({children}) => <li className="mb-1 text-black">{children}</li>,
-              strong: ({children}) => <strong className="font-bold text-black">{children}</strong>,
-              em: ({children}) => <em className="italic text-black">{children}</em>,
-            }}
+        {/* Content with scroll */}
+        <div className="px-6 pb-6 pt-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="text-gray-700 leading-relaxed prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900"
           >
-            {typeof children === 'string'
-              ? children
-              : typeof children === 'number'
-                ? children.toString()
-                : ''}
-          </ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                h1: ({children}) => <h1 className="text-2xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-3">{children}</h1>,
+                h2: ({children}) => <h2 className="text-xl font-semibold mb-4 text-gray-900 mt-8">{children}</h2>,
+                h3: ({children}) => <h3 className="text-lg font-semibold mb-3 text-gray-900 mt-6">{children}</h3>,
+                p: ({children}) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
+                ul: ({children}) => <ul className="list-none space-y-2 mb-4">{children}</ul>,
+                ol: ({children}) => <ol className="list-decimal pl-5 space-y-2 mb-4 text-gray-700">{children}</ol>,
+                li: ({children}) => (
+                  <li className="text-gray-700 flex items-start">
+                    <span className="w-1.5 h-1.5 bg-diverse-pink rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span>{children}</span>
+                  </li>
+                ),
+                strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                em: ({children}) => <em className="italic text-gray-600">{children}</em>,
+                blockquote: ({children}) => (
+                  <blockquote className="border-l-4 border-diverse-pink bg-gray-50 pl-4 py-2 my-4 italic text-gray-600">
+                    {children}
+                  </blockquote>
+                ),
+              }}
+            >
+              {typeof children === 'string'
+                ? children
+                : typeof children === 'number'
+                  ? children.toString()
+                  : ''}
+            </ReactMarkdown>
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>
