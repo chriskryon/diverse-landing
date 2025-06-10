@@ -63,10 +63,10 @@ export default function FaqSection() {
           animate={headerAnimation.animate}
           className="text-center mb-12 lg:hidden"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#181919] mb-4">
             Perguntas Frequentes
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed text-justify">
             Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros. 
             Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.
           </p>
@@ -81,10 +81,10 @@ export default function FaqSection() {
             className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
-              <h2 className="text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-5xl xl:text-6xl font-bold text-[#181919] mb-6 leading-tight">
                 FAQ
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8 text-justify">
+              <p className="text-xl text-gray-400 leading-relaxed mb-8 text-justify">
                 Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
               </p>
               <div className="w-20 h-1 bg-diverse-pink rounded-full"></div>
@@ -113,7 +113,7 @@ export default function FaqSection() {
                     <h3 className={`text-lg font-semibold pr-4 transition-colors ${
                       openItem === index 
                         ? 'text-diverse-pink' 
-                        : 'text-gray-900 group-hover:text-diverse-pink'
+                        : 'text-[#181919] group-hover:text-diverse-pink'
                     }`}>
                       {item.question}
                     </h3>
@@ -137,7 +137,7 @@ export default function FaqSection() {
                       >
                         <div className="px-6 pb-6 pt-0">
                           <div className="w-full h-px bg-gradient-to-r from-diverse-pink/20 to-transparent mb-4"></div>
-                          <p className="text-gray-700 leading-relaxed text-base text-justify">
+                          <p className="text-[#181919] leading-relaxed text-base text-justify">
                             {item.answer}
                           </p>
                         </div>
