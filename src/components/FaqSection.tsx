@@ -63,10 +63,10 @@ export default function FaqSection() {
           animate={headerAnimation.animate}
           className="text-center mb-12 lg:hidden"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#181919] mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-diverse-black mb-4">
             Perguntas Frequentes
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed text-justify">
+          <p className="text-xl text-diverse-black max-w-3xl mx-auto leading-relaxed text-justify">
             Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros. 
             Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.
           </p>
