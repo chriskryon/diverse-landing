@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+.faq-text {
+  color: #181919 !important;
+}
+
 @theme {
   --color-diverse-yellow: var(--yellow);
   --color-diverse-pink: var(--pink);
