@@ -2,12 +2,12 @@
 import ApiSection from "@/components/ApiSection"
 import Benefits from "@/components/benefits"
 import CTAModal from "@/components/CallToAction"
+import FAQSection from "@/components/FaqSection"
 import FinancialControl from "@/components/FinancialControl"
 import Footer from "@/components/Footer"
 import Hero from "@/components/Hero"
 import Navigation from "@/components/Navigation"
 import { useState } from "react"
-import FaqSection from "@/components/FaqSection"
 
 export default function DiversePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -39,7 +39,7 @@ export default function DiversePage() {
       <ApiSection />
 
       {/* FAQ Section */}
-      <FaqSection />
+      <FAQSection />
 
       {/* Footer Section */}
       <Footer />

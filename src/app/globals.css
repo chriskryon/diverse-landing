@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-.faq-text {
+#faq-text {
   color: #181919 !important;
 }
 

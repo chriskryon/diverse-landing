@@ -55,37 +55,32 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-white py-8 px-6">
-      <div className="text-diverse-pink max-w-7xl mx-auto">
-        <motion.div
-          ref={headerAnimation.ref}
-          initial={headerAnimation.initial}
-          animate={headerAnimation.animate}
-          className="text-diverse-pink text-center mb-12 lg:hidden"
-        >
-          <h2 className="text-diverse-pink text-4xl lg:text-5xl font-bold mb-4 ">
-            FAQ
-          </h2>
-        </motion.div>
-
-        <div className="text-diverse-pink lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
-          {/* Desktop FAQ Title - Left Side */}
+    <section className="bg-gray-50 py-8 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Mobile: stack, Desktop: FAQ and accordions side by side */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          {/* FAQ Title and Description */}
           <motion.div
             ref={headerAnimation.ref}
             initial={headerAnimation.initial}
             animate={headerAnimation.animate}
-            className="text-diverse-pink hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
+            className="text-center mb-12 lg:mb-0 lg:text-left lg:w-1/2"
           >
-            <div className="pr-8">
-              <h2 className="text-diverse-pink text-5xl xl:text-6xl font-bold  mb-6 leading-tight">
-                FAQ
-              </h2>
-              <div className="w-20 h-1 bg-diverse-pink rounded-full"></div>
-            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-diverse-black mb-4 inline-block lg:mb-0 lg:mr-6 align-middle">
+              FAQ
+            </h2>
+            <span className="hidden lg:inline-block align-middle text-xl text-diverse-black leading-relaxed text-justify">
+              Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
+            </span>
+            <p className="text-xl text-diverse-black max-w-3xl mx-auto leading-relaxed text-justify lg:hidden">
+              Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros. 
+              Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.
+            </p>
+            <div className="w-20 h-1 bg-diverse-pink rounded-full mt-4 mx-auto lg:mx-0 lg:mt-6"></div>
           </motion.div>
 
-          {/* Accordion - Right Side */}
-          <div className="lg:col-span-8">
+          {/* Accordions */}
+          <div className="lg:w-1/2">
             <motion.div
               ref={staggeredAnimation.ref}
               initial="hidden"
