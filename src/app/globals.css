@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
-@theme inline {
+@theme {
   --color-diverse-yellow: var(--yellow);
   --color-diverse-pink: var(--pink);
   --color-diverse-black: var(--black);
