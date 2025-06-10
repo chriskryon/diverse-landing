@@ -55,7 +55,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-gray-50 py-8 px-6">
+    <section className="bg-white text-black py-8 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={headerAnimation.ref}
