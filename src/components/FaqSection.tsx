@@ -56,25 +56,25 @@ export default function FaqSection() {
 
   return (
     <section className="bg-white py-8 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="text-diverse-pink max-w-7xl mx-auto">
         <motion.div
           ref={headerAnimation.ref}
           initial={headerAnimation.initial}
           animate={headerAnimation.animate}
-          className="text-center mb-12 lg:hidden"
+          className="text-diverse-pink text-center mb-12 lg:hidden"
         >
           <h2 className="text-diverse-pink text-4xl lg:text-5xl font-bold mb-4 ">
             FAQ
           </h2>
         </motion.div>
 
-        <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
+        <div className="text-diverse-pink lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
           {/* Desktop FAQ Title - Left Side */}
           <motion.div
             ref={headerAnimation.ref}
             initial={headerAnimation.initial}
             animate={headerAnimation.animate}
-            className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
+            className="text-diverse-pink hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
               <h2 className="text-diverse-pink text-5xl xl:text-6xl font-bold  mb-6 leading-tight">
