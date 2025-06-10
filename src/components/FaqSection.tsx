@@ -57,26 +57,26 @@ export default function FaqSection() {
   return (
     <section className="bg-gray-50 py-8 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* FAQ Title and Description always on top */}
-        <motion.div
-          ref={headerAnimation.ref}
-          initial={headerAnimation.initial}
-          animate={headerAnimation.animate}
-          className="text-center mb-12 lg:mb-16"
-        >
-          <h2 className="text-4xl lg:text-5xl font-bold text-diverse-black mb-4">
-            FAQ
-          </h2>
-          <p className="text-xl text-diverse-black max-w-3xl mx-auto leading-relaxed text-justify">
-            Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
-            <span className="hidden lg:inline"> Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.</span>
-          </p>
-          <div className="w-20 h-1 bg-diverse-pink rounded-full mt-4 mx-auto"></div>
-        </motion.div>
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
+          {/* FAQ Title and Description - Left (desktop: small width, top) */}
+          <motion.div
+            ref={headerAnimation.ref}
+            initial={headerAnimation.initial}
+            animate={headerAnimation.animate}
+            className="text-center mb-12 lg:mb-0 lg:text-left lg:w-1/3 xl:w-1/4"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-diverse-black mb-4">
+              FAQ
+            </h2>
+            <p className="text-xl text-diverse-black max-w-3xl mx-auto leading-relaxed text-justify">
+              Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
+              <span className="hidden lg:inline"> Nossa missão é oferecer transparência total e suporte completo para sua jornada financeira.</span>
+            </p>
+            <div className="w-20 h-1 bg-diverse-pink rounded-full mt-4 mx-auto lg:mx-0"></div>
+          </motion.div>
 
-        {/* Accordions below title/description */}
-        <div className="flex flex-col lg:flex-row lg:justify-center">
-          <div className="w-full">
+          {/* Accordions - Right (desktop: wide, top) */}
+          <div className="lg:w-2/3 xl:w-3/4">
             <motion.div
               ref={staggeredAnimation.ref}
               initial="hidden"

@@ -1,7 +1,61 @@
-import { motion } from 'framer-motion';
-import ApiCodeBlock from './ApiCodeBlock';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useApiSectionAnimations } from '../hooks/useApiSectionAnimations';
 import { useState } from 'react';
+import ApiCodeBlock from './ApiCodeBlock';
+import NodeJsIcon from './icons/NodeJs';
+import PythonIcon from './icons/Python';
+
+const codeExamples = {
+  node: `// Criar um Pix com axios (Node.js)
+const axios = require('axios');
+
+const response = await axios.post('https://api.diverse.com.vc/pix', {
+  valor: 100.00,
+  chave: 'email@cliente.com',
+  descricao: 'Pagamento de serviço'
+}, {
+  headers: {
+    'Authorization': 'Bearer SEU_TOKEN_AQUI'
+  }
+});
+
+console.log(response.data);`,
+  python: `# Criar um Pix com requests (Python)
+import requests
+
+headers = {
+    "Authorization": "Bearer SEU_TOKEN_AQUI"
+}
+payload = {
+    "valor": 100.00,
+    "chave": "email@cliente.com",
+    "descricao": "Pagamento de serviço"
+}
+response = requests.post("https://api.diverse.com.vc/pix", json=payload, headers=headers)
+print(response.json())`,
+  curl: `# Criar um Pix com cURL
+curl -X POST https://api.diverse.com.vc/pix \\
+  -H "Authorization: Bearer SEU_TOKEN_AQUI" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "valor": 100.00,
+    "chave": "email@cliente.com",
+    "descricao": "Pagamento de serviço"
+  }'`
+};
+
+const languages = [
+  {
+    id: 'node',
+    label: 'Node.js',
+    icon: <NodeJsIcon width={"32px"} />
+  },
+  {
+    id: 'python',
+    label: 'Python',
+    icon: <PythonIcon width={"32px"} />
+  },
+];
 
 export default function ApiSection() {
   const {
@@ -12,6 +66,8 @@ export default function ApiSection() {
   } = useApiSectionAnimations();
 
   const [hoveredBenefit, setHoveredBenefit] = useState<string | null>(null);
+  const [selectedLang, setSelectedLang] = useState<'node' | 'python' | 'curl'>('node');
+  const [codeKey, setCodeKey] = useState(0);
 
   const benefits = [
     { id: 'pagamentos', title: 'Pagamentos Automatizados', desc: 'Integre Pix e boletos diretamente no seu sistema.', icon: '📲' },
@@ -61,16 +117,58 @@ export default function ApiSection() {
           ))}
         </motion.div>
 
-        {/* Exemplo de Código */}
-        <motion.div 
+        {/* Modern Language Cards + Code Example */}
+        <motion.div
           className="bg-black p-6 rounded-xl max-w-3xl mx-auto mb-12 border border-gray-800"
           ref={codeBlockAnimations.ref}
           initial={codeBlockAnimations.initial}
           animate={codeBlockAnimations.controls}
           variants={codeBlockAnimations.variants}
         >
-          <h3 className="text-xl font-semibold mb-4">Exemplo: Criar um Pix</h3>
-          <ApiCodeBlock />
+          <h3 className="text-xl font-semibold mb-6 text-white">Exemplo: Criar um Pix</h3>
+          {/* Minimal language buttons */}
+          <div className="flex gap-2 mb-6 justify-center">
+            {languages.map(lang => (
+              <button
+                key={lang.id}
+                type="button"
+                onClick={() => {
+                  setSelectedLang(lang.id as 'node' | 'python' | 'curl');
+                  setCodeKey(prev => prev + 1);
+                }}
+                className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-200
+                  ${selectedLang === lang.id
+                    ? 'bg-diverse-pink border-diverse-pink text-white scale-110 shadow'
+                    : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }
+                `}
+                aria-label={lang.label}
+              >
+                {lang.icon}
+              </button>
+            ))}
+          </div>
+          {/* Animated code block with ApiCodeBlock */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedLang + codeKey}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
+            >
+              <ApiCodeBlock
+                code={codeExamples[selectedLang]}
+                language={
+                  selectedLang === 'node'
+                    ? 'javascript'
+                    : selectedLang === 'python'
+                    ? 'python'
+                    : 'bash'
+                }
+              />
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
 
         {/* CTA */}
