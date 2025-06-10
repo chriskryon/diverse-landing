@@ -34,19 +34,25 @@ export default function Footer() {
               </h2>
 
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-              <button className="flex items-center space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors">
-                <DownloadIcon className="w-6 h-6 text-white" />
-                <div className="text-left text-white">
-                  <div className="text-xs text-white">Em breve na</div>
-                  <div className="font-medium text-white">App Store</div>
-                </div>
+              <button
+              className="flex items-center w-56 h-16 space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors"
+              style={{ minWidth: "224px", minHeight: "64px" }}
+              >
+              <DownloadIcon className="w-6 h-6 text-white" />
+              <div className="text-left text-white">
+                <div className="text-xs text-white">Em breve na</div>
+                <div className="font-medium text-white">App Store</div>
+              </div>
               </button>
-              <button className="flex items-center space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors">
-                <DownloadIcon className="w-6 h-6 text-white" />
-                <div className="text-left text-white">
-                  <div className="text-xs text-white">Em breve no</div>
-                  <div className="font-medium text-white">Google Play</div>
-                </div>
+              <button
+              className="flex items-center w-56 h-16 space-x-3 bg-zinc-900 text-white px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors"
+              style={{ minWidth: "224px", minHeight: "64px" }}
+              >
+              <DownloadIcon className="w-6 h-6 text-white" />
+              <div className="text-left text-white">
+                <div className="text-xs text-white">Em breve no</div>
+                <div className="font-medium text-white">Google Play</div>
+              </div>
               </button>
             </div>
           </div>
