@@ -126,6 +126,25 @@
     background-image: -o-linear-gradient(left, var(--tw-gradient-stops));
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
   }
+  
+  /* Custom transitions */
+  .transition-border {
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-all-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Micro-interactions */
+  .micro-bounce:hover {
+    animation: micro-bounce 0.4s ease-in-out;
+  }
+  
+  @keyframes micro-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
 }
 
 @layer base {

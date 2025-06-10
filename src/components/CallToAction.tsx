@@ -94,7 +94,7 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Nome completo" 
-                className="p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border border-gray-700 focus:border-pink-500 outline-none transition-colors text-xs sm:text-sm" 
+                className="p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border border-gray-700 focus:border-pink-500 outline-none transition-all duration-300 text-xs sm:text-sm hover:border-gray-600" 
               />
               
               {/* Campo de CPF */}
@@ -107,8 +107,8 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
                   value={formData.cpf}
                   onChange={handleChange}
                   placeholder="000.000.000-00" 
-                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-colors w-full focus:outline-none text-xs sm:text-sm ${
-                    errors.cpf ? 'border-red-500' : 'border-gray-700 focus:border-pink-500'
+                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-all duration-300 w-full focus:outline-none text-xs sm:text-sm ${
+                    errors.cpf ? 'border-red-500 focus:border-red-400' : 'border-gray-700 focus:border-pink-500 hover:border-gray-600'
                   }`}
                 />
                 {errors.cpf && (
@@ -128,8 +128,8 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
                   value={formData.cnpj}
                   onChange={handleChange}
                   placeholder="00.000.000/0000-00" 
-                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-colors w-full focus:outline-none text-xs sm:text-sm ${
-                    errors.cnpj ? 'border-red-500' : 'border-gray-700 focus:border-pink-500'
+                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-all duration-300 w-full focus:outline-none text-xs sm:text-sm ${
+                    errors.cnpj ? 'border-red-500 focus:border-red-400' : 'border-gray-700 focus:border-pink-500 hover:border-gray-600'
                   }`}
                 />
                 {errors.cnpj && (
@@ -147,8 +147,8 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email" 
-                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-colors w-full focus:outline-none text-xs sm:text-sm ${
-                    errors.email ? 'border-red-500' : 'border-gray-700 focus:border-pink-500'
+                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-all duration-300 w-full focus:outline-none text-xs sm:text-sm ${
+                    errors.email ? 'border-red-500 focus:border-red-400' : 'border-gray-700 focus:border-pink-500 hover:border-gray-600'
                   }`}
                 />
                 {errors.email && (
@@ -167,8 +167,8 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="(00) 00000-0000" 
-                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-colors w-full focus:outline-none text-xs sm:text-sm ${
-                    errors.phone ? 'border-red-500' : 'border-gray-700 focus:border-pink-500'
+                  className={`p-2 rounded-xl bg-white/10 text-white placeholder-gray-400 border transition-all duration-300 w-full focus:outline-none text-xs sm:text-sm ${
+                    errors.phone ? 'border-red-500 focus:border-red-400' : 'border-gray-700 focus:border-pink-500 hover:border-gray-600'
                   }`}
                 />
                 {errors.phone && (
@@ -185,15 +185,15 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
               <button 
                 type="submit" 
                 disabled={isSubmitting || !isFormValid}
-                className={`bg-diverse-yellow text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium hover:opacity-90 transition-colors mt-2 relative text-xs sm:text-sm
-                  ${(isSubmitting || !isFormValid) ? 'opacity-50 cursor-not-allowed' : ''}
+                className={`bg-diverse-yellow text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium hover:opacity-90 transition-all duration-300 mt-2 relative text-xs sm:text-sm
+                  ${(isSubmitting || !isFormValid) ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}
                 `}
               >
                 {isSubmitting ? (
                   <>
                     <span className="opacity-0">Junte-se à Lista de Espera</span>
                     <span className="absolute inset-0 flex items-center justify-center">
-                      <svg className="animate-spin h-3 w-3 sm:h-4 sm:w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                      <svg className="animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true" role="img">
                         <title>Loading</title>
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
