@@ -199,7 +199,7 @@ export default function Benefits() {
           
           <div className="w-full flex justify-center" style={{ boxSizing: "border-box" }}>
             <div 
-              className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 place-items-center"
+              className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 place-items-center"
               onMouseLeave={() => setHoveredFeature(null)}
             >
               {features.map((item, i) => (
