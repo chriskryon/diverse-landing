@@ -2,10 +2,10 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useRef, useEffect, useState } from "react"
-import CardGradient from "../../public/cards/gradientCard.png"
-import CardZebra from "../../public/cards/zebraCard.png"
 import NoiseOverlay from "./NoiseOverlay"
 import { useHeroAnimations } from "@/hooks/useHeroAnimations"
+import CardGradient from "./icons/CardGradient"
+import CardZebra from "./icons/CardZebra"
 
 interface HeroProps {
   openModal: () => void
@@ -125,14 +125,7 @@ export default function Hero({ openModal }: HeroProps) {
             }}
             className="relative"
           >
-            <Image
-              src={CardGradient}
-              alt="Credit Card Gradient"
-              width={isMobile ? 230 : 200}
-              height={isMobile ? 230 : 200}
-              className="transform rounded-2xl"
-              priority
-            />
+            <CardGradient />
           </motion.div>
         </motion.div>
 
@@ -161,14 +154,7 @@ export default function Hero({ openModal }: HeroProps) {
             }}
             className="relative"
           >
-            <Image
-              src={CardZebra}
-              alt="Credit Card Zebra"
-              width={isMobile ? 230 : 200}
-              height={isMobile ? 230 : 200}
-              className="transform rounded-2xl"
-              priority
-            />
+            <CardZebra />
           </motion.div>
         </motion.div>
       </div>
