@@ -5,20 +5,18 @@ import RendimentoPayLogo from "../logos/LogoRendimentoPay"
 import AppOnIphone from "../../../public/images/app.png"
 import { benefits, features } from "./data"
 import { useBenefitsAnimations } from "@/hooks/useBenefitsAnimations"
-import { useState } from "react"
 
 export default function Benefits() {
   const {
     hoveredCard,
     setHoveredCard,
+    hoveredFeature,
+    setHoveredFeature,
     titleAnimations,
     mobileAnimations,
     desktopAnimations,
-    featuresAnimations,
-    hoverBorderEffect
+    featuresAnimations
   } = useBenefitsAnimations();
-  
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   
   const companyLogos = [
     {
@@ -35,7 +33,7 @@ export default function Benefits() {
         <motion.div 
           className="text-center mb-16"
           ref={titleAnimations.ref}
-          initial={titleAnimations.initial}
+          initial="hidden"
           animate={titleAnimations.controls}
           variants={titleAnimations.variants}
         >
@@ -190,9 +188,7 @@ export default function Benefits() {
               return (
                 <motion.div
                   key={logo.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  {...featuresAnimations.logoItem(index)}
                   className="opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105"
                 >
                   <LogoComponent height={logo.height} />
@@ -211,9 +207,7 @@ export default function Benefits() {
                   key={`rendimento-benefit-${i}`}
                   className="rounded-xl group transition-all duration-300"
                   style={{ boxSizing: "border-box" }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: hoveredFeature !== null && hoveredFeature !== i ? 0.3 : 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  {...featuresAnimations.featureItem(i)}
                   onMouseEnter={() => setHoveredFeature(i)}
                   whileHover={featuresAnimations.featureHover}
                 >

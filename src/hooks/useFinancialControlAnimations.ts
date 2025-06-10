@@ -19,6 +19,8 @@ export function useFinancialControlAnimations() {
   
   // Title animations
   const titleAnimations = {
+    ref: titleAnimation.ref,
+    controls: titleAnimation.controls,
     container: containerVariants,
     title: {
       hidden: { x: -50, opacity: 0 },
@@ -57,14 +59,16 @@ export function useFinancialControlAnimations() {
   const textBoxAnimations = {
     ref: textBoxAnimation.ref,
     controls: textBoxAnimation.controls,
-    initial: { y: 30, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { 
-        duration: 0.6, 
-        delay: 0.4,
-        ease: "easeOut" 
+    variants: {
+      hidden: { y: 30, opacity: 0 },
+      visible: { 
+        y: 0, 
+        opacity: 1,
+        transition: { 
+          duration: 0.6, 
+          delay: 0.4,
+          ease: "easeOut" 
+        }
       }
     },
     hover: { 
@@ -76,7 +80,6 @@ export function useFinancialControlAnimations() {
   };
 
   return {
-    titleAnimation,
     titleAnimations,
     imageAnimations,
     textBoxAnimations

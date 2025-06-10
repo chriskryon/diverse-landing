@@ -6,7 +6,6 @@ import { useFinancialControlAnimations } from "../hooks/useFinancialControlAnima
 
 export default function FinancialControl() {
   const {
-    titleAnimation,
     titleAnimations,
     imageAnimations,
     textBoxAnimations
@@ -18,9 +17,9 @@ export default function FinancialControl() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Title Section */}
           <motion.div
-            ref={titleAnimation.ref}
+            ref={titleAnimations.ref}
             initial="hidden"
-            animate={titleAnimation.controls}
+            animate={titleAnimations.controls}
             variants={titleAnimations.container}
           >
             <motion.h2 
@@ -56,9 +55,9 @@ export default function FinancialControl() {
         <motion.div 
           className="mt-6 bg-[#101828] text-white p-8 rounded-2xl border border-gray-700 shadow-xl"
           ref={textBoxAnimations.ref}
-          initial={textBoxAnimations.initial}
+          initial="hidden"
           animate={textBoxAnimations.controls}
-          variants={{ visible: textBoxAnimations.visible }}
+          variants={textBoxAnimations.variants}
           whileHover={textBoxAnimations.hover}
         >
             <p className="text-lg leading-relaxed">

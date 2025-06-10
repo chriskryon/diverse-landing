@@ -3,6 +3,7 @@ import { useElementInView } from "./useElementInView";
 
 export function useBenefitsAnimations() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   
   // Animation refs and controls - Use threshold 0.1 for earlier triggering
   const titleAnimation = useElementInView(0.1);
@@ -31,12 +32,12 @@ export function useBenefitsAnimations() {
     }
   };
 
-  // Title animations with variants properly defined in the hook
+  // Title animations
   const titleAnimations = {
     ref: titleAnimation.ref,
     controls: titleAnimation.controls,
-    initial: { opacity: 0, y: 30 },
     variants: {
+      hidden: { opacity: 0, y: 30 },
       visible: { 
         opacity: 1, 
         y: 0,
@@ -130,6 +131,14 @@ export function useBenefitsAnimations() {
     controls: featuresAnimation.controls,
     container: containerVariants,
     item: itemVariants,
+    featureItem: (i: number) => ({
+      initial: { opacity: 0, y: 20 },
+      animate: { 
+        opacity: hoveredFeature !== null && hoveredFeature !== i ? 0.3 : 1, 
+        y: 0 
+      },
+      transition: { delay: i * 0.1, duration: 0.5 }
+    }),
     featureHover: { 
       scale: 1.07, 
       y: -10, 
@@ -140,16 +149,22 @@ export function useBenefitsAnimations() {
       type: "spring", 
       stiffness: 300, 
       damping: 20 
-    }
+    },
+    logoItem: (index: number) => ({
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { delay: index * 0.1, duration: 0.5 }
+    })
   };
 
   return {
     hoveredCard,
     setHoveredCard,
+    hoveredFeature,
+    setHoveredFeature,
     titleAnimations,
     mobileAnimations,
     desktopAnimations,
-    featuresAnimations,
-    hoverBorderEffect: "hover:border-diverse-pink hover:shadow-lg"
+    featuresAnimations
   };
 }

@@ -6,7 +6,7 @@ import { useRef, useEffect } from "react"
 export function useElementInView(threshold = 0.1) {
   const ref = useRef(null)
   const controls = useAnimation()
-  const inView = useInView(ref, { once: true })
+  const inView = useInView(ref, { once: true, amount: threshold })
 
   useEffect(() => {
     if (inView) {
@@ -14,5 +14,5 @@ export function useElementInView(threshold = 0.1) {
     }
   }, [controls, inView])
 
-  return { ref, controls }
+  return { ref, controls, inView }
 }
