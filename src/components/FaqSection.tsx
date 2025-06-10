@@ -81,10 +81,10 @@ export default function FaqSection() {
             className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
-              <h2 className="text-5xl xl:text-6xl font-bold text-[#181919] mb-6 leading-tight">
+              <h2 className="text-5xl xl:text-6xl font-bold text-diverse-black mb-6 leading-tight">
                 FAQ
               </h2>
-              <p className="text-xl text-gray-400 leading-relaxed mb-8 text-justify">
+              <p className="text-xl text-diverse-black leading-relaxed mb-8 text-justify">
                 Esclarecemos as principais dúvidas sobre nossos produtos e serviços financeiros.
               </p>
               <div className="w-20 h-1 bg-diverse-pink rounded-full"></div>
