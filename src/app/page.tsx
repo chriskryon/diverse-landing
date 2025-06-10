@@ -2,7 +2,7 @@
 import ApiSection from "@/components/ApiSection"
 import Benefits from "@/components/benefits"
 import CTAModal from "@/components/CallToAction"
-import FAQSection from "@/components/FaqSection"
+import FaqSection from "@/components/FaqSection"
 import FinancialControl from "@/components/FinancialControl"
 import Footer from "@/components/Footer"
 import Hero from "@/components/Hero"
@@ -39,7 +39,7 @@ export default function DiversePage() {
       <ApiSection />
 
       {/* FAQ Section */}
-      <FAQSection />
+      <FaqSection />
 
       {/* Footer Section */}
       <Footer />

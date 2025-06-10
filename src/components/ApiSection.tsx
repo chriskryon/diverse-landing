@@ -114,25 +114,29 @@ export default function ApiSection() {
           variants={benefitsAnimations.container}
           onMouseLeave={() => setHoveredBenefit(null)}
         >
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             {benefits.map((benefit) => (
               <motion.div
                 key={benefit.id}
                 variants={benefitsAnimations.item}
-                className="flex flex-col items-center bg-white rounded-xl border-2 border-diverse-pink p-4 shadow-sm hover:shadow-md transition-all duration-200 group"
-                style={{ minHeight: 150, maxWidth: 220 }}
+                className="relative flex flex-col items-center bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:bg-white/10"
+                style={{ minHeight: 180, maxWidth: 240 }}
                 animate={{
-                  opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
-                  filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
+                  opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.4 : 1,
+                  scale: hoveredBenefit === benefit.id ? 1.02 : 1,
+                  filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(1px)" : "blur(0px)",
                   transition: { duration: 0.3 }
                 }}
                 onMouseEnter={() => setHoveredBenefit(benefit.id)}
               >
-                <div className="mb-2 flex items-center justify-center rounded-full bg-diverse-pink/10 w-10 h-10 group-hover:bg-diverse-pink/20 transition-colors">
+                {/* Accent border on hover */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-diverse-pink/30 transition-all duration-300" />
+                
+                <div className="mb-4 flex items-center justify-center rounded-2xl bg-diverse-pink/20 w-14 h-14 group-hover:bg-diverse-pink/30 transition-all duration-300 group-hover:scale-110">
                   {benefit.icon}
                 </div>
-                <h3 className="text-base font-bold mb-1 text-[#181919] text-center">{benefit.title}</h3>
-                <p className="text-sm text-[#181919] text-center font-medium">{benefit.desc}</p>
+                <h3 className="text-lg font-bold mb-3 text-white text-center leading-tight">{benefit.title}</h3>
+                <p className="text-sm text-gray-300 text-center font-medium leading-relaxed">{benefit.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -140,15 +144,16 @@ export default function ApiSection() {
 
         {/* Modern Language Cards + Code Example */}
         <motion.div
-          className="bg-black p-6 rounded-xl max-w-3xl mx-auto mb-12 border border-gray-800"
+          className="bg-gray-950/80 backdrop-blur-sm p-8 rounded-2xl max-w-4xl mx-auto mb-7 border border-gray-800/50 shadow-2xl"
           ref={codeBlockAnimations.ref}
           initial={codeBlockAnimations.initial}
           animate={codeBlockAnimations.controls}
           variants={codeBlockAnimations.variants}
         >
-          <h3 className="text-xl font-semibold mb-6 text-white">Exemplo: Criar um Pix</h3>
-          {/* Minimal language buttons */}
-          <div className="flex gap-2 mb-6 justify-center">
+          <h3 className="text-2xl font-semibold mb-8 text-white text-center">Exemplo: Criar um Pix</h3>
+          
+          {/* Enhanced language selector */}
+          <div className="flex gap-3 mb-8 justify-center bg-gray-900/50 p-2 rounded-xl border border-gray-700/50">
             {languages.map(lang => (
               <button
                 key={lang.id}
@@ -157,18 +162,21 @@ export default function ApiSection() {
                   setSelectedLang(lang.id as 'node' | 'python' | 'curl');
                   setCodeKey(prev => prev + 1);
                 }}
-                className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-200
+                className={`flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-300 font-medium
                   ${selectedLang === lang.id
-                    ? 'bg-diverse-pink border-diverse-pink text-white scale-110 shadow'
-                    : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-diverse-pink border-diverse-pink text-white shadow-lg shadow-diverse-pink/20'
+                    : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:bg-gray-700/70 hover:text-white hover:border-gray-600'
                   }
                 `}
-                aria-label={lang.label}
               >
-                {lang.icon}
+                <span className="w-6 h-6 flex items-center justify-center">
+                  {lang.icon}
+                </span>
+                <span className="text-sm">{lang.label}</span>
               </button>
             ))}
           </div>
+          
           {/* Animated code block with ApiCodeBlock */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -192,20 +200,22 @@ export default function ApiSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* CTA */}
+        {/* Enhanced CTA */}
         <motion.div 
-          className="text-center mt-12"
+          className="text-center mt-4"
           ref={ctaAnimations.ref}
           initial={ctaAnimations.initial}
           animate={ctaAnimations.controls}
           variants={ctaAnimations.variants}
         >
-          <button type='button' className="bg-diverse-yellow text-black px-6 py-3 rounded-full font-medium transition-opacity duration-300 hover:opacity-80">
-            Solicitar Acesso à API
-          </button>
-          <p className="mt-4 text-gray-400 text-sm">
-            Nossa API segue os padrões do Open Banking Brasil, com autenticação OAuth 2.0, criptografia AES-256 e conformidade com LGPD.
-          </p>
+          <div className="inline-flex flex-col items-center gap-4 bg-gray-900/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-800/50">
+            <button type='button' className="bg-diverse-yellow text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-diverse-yellow/90 hover:scale-105 shadow-lg hover:shadow-xl">
+              Solicitar Acesso à API
+            </button>
+            <p className="mt-2 text-gray-400 text-sm max-w-2xl leading-relaxed">
+              Nossa API segue os padrões do <span className="text-diverse-pink font-medium">Open Banking Brasil</span>, com autenticação OAuth 2.0, criptografia AES-256 e conformidade com LGPD.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

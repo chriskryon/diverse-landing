@@ -72,9 +72,7 @@ export function useFinancialControlAnimations() {
       }
     },
     hover: { 
-      y: -8, 
-      boxShadow: "0 16px 40px rgba(249,45,158,0.25)",
-      backgroundColor: "#0f172a",
+      y: -1, 
       transition: { duration: 0.3 }
     }
   };
