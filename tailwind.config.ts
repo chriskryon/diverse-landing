@@ -1,17 +1,26 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-	darkMode: "class",
+	darkMode: false,
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/**/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/*/*/*.{js,ts,jsx,tsx,mdx}",
+		"./src/*/*/*/*.{js,ts,jsx,tsx,mdx}",
+		"./src/*/*/*/*/*.{js,ts,jsx,tsx,mdx}",
 		"*.{js,ts,jsx,tsx,mdx}",
+		{ raw: "bg-gradient-to-(r|l|t|b)" },
+		{ raw: "from-(yellow|pink)" },
+		{ raw: "to-(yellow|pink)" },
 	],
 	theme: {
 		extend: {
 			colors: {
+				yellow: "var(--yellow)",
+				pink: "var(--pink)",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {
