@@ -14,6 +14,7 @@ interface HeroProps {
 export default function Hero({ openModal }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 })
   
   // Get all animation configurations from custom hook, including mobile detection
   const {
@@ -35,8 +36,27 @@ export default function Hero({ openModal }: HeroProps) {
     setIsMounted(true)
   }, [])
 
+  // Mouse tracking for gradient effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / rect.width) * 100
+      const y = ((e.clientY - rect.top) / rect.height) * 100
+      setMousePosition({ x, y })
+    }
+  }
+
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center w-full max-w-[100vw]">
+    <section 
+      ref={sectionRef} 
+      className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center w-full max-w-[100vw] transition-all duration-300 ease-out"
+      onMouseMove={handleMouseMove}
+      style={{ 
+        backgroundImage: `radial-gradient(circle 200px at ${mousePosition.x}% ${mousePosition.y}%, rgba(235, 255, 0, 0.08) 0%, rgba(248, 45, 158, 0.12) 40%, transparent 70%)`,
+        '--gradient-x': `${mousePosition.x}%`,
+        '--gradient-y': `${mousePosition.y}%`
+      } as React.CSSProperties}
+    >
       {/* Hero Content */}
       <motion.div 
         className="text-center px-4 sm:px-6 pt-20 relative z-10 w-full"
