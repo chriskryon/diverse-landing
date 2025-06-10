@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ApiCodeBlock from './ApiCodeBlock';
 import NodeJsIcon from './icons/NodeJs';
 import PythonIcon from './icons/Python';
+import { Smartphone, BarChart2, ShieldCheck, CreditCard, Database, Lock } from 'lucide-react';
 
 const codeExamples = {
   node: `// Criar um Pix com axios (Node.js)
@@ -70,9 +71,24 @@ export default function ApiSection() {
   const [codeKey, setCodeKey] = useState(0);
 
   const benefits = [
-    { id: 'pagamentos', title: 'Pagamentos Automatizados', desc: 'Integre Pix e boletos diretamente no seu sistema.', icon: '📲' },
-    { id: 'gestao', title: 'Gestão em Tempo Real', desc: 'Acesse saldos e relatórios financeiros via API.', icon: '📊' },
-    { id: 'seguranca', title: 'Segurança Bancária', desc: 'Autenticação OAuth 2.0 e criptografia ponta a ponta.', icon: '🔒' },
+    {
+      id: 'pagamentos',
+      title: 'Pagamentos Automatizados',
+      desc: 'Integre Pix e boletos diretamente no seu sistema.',
+      icon: <CreditCard className="w-6 h-6 text-diverse-pink" />
+    },
+    {
+      id: 'gestao',
+      title: 'Gestão em Tempo Real',
+      desc: 'Acesse saldos e relatórios financeiros via API.',
+      icon: <Database className="w-6 h-6 text-diverse-yellow" />
+    },
+    {
+      id: 'seguranca',
+      title: 'Segurança Bancária',
+      desc: 'Autenticação OAuth 2.0 e criptografia ponta a ponta.',
+      icon: <Lock className="w-6 h-6 text-diverse-black" />
+    },
   ];
 
   return (
@@ -91,30 +107,35 @@ export default function ApiSection() {
 
         {/* Benefícios */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 mt-12"
+          className="flex justify-center mb-12 mt-7"
           ref={benefitsAnimations.ref}
           initial="hidden"
           animate={benefitsAnimations.controls}
           variants={benefitsAnimations.container}
           onMouseLeave={() => setHoveredBenefit(null)}
         >
-          {benefits.map((benefit) => (
-            <motion.div
-              key={benefit.id}
-              variants={benefitsAnimations.item}
-              className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)]"
-              animate={{
-                opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
-                filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
-                transition: { duration: 0.3 }
-              }}
-              onMouseEnter={() => setHoveredBenefit(benefit.id)}
-            >
-              <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-[#181919]">{benefit.title}</h3>
-              <p className="text-[#181919]">{benefit.desc}</p>
-            </motion.div>
-          ))}
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+            {benefits.map((benefit) => (
+              <motion.div
+                key={benefit.id}
+                variants={benefitsAnimations.item}
+                className="flex flex-col items-center bg-white rounded-xl border-2 border-diverse-pink p-4 shadow-sm hover:shadow-md transition-all duration-200 group"
+                style={{ minHeight: 150, maxWidth: 220 }}
+                animate={{
+                  opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
+                  filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
+                  transition: { duration: 0.3 }
+                }}
+                onMouseEnter={() => setHoveredBenefit(benefit.id)}
+              >
+                <div className="mb-2 flex items-center justify-center rounded-full bg-diverse-pink/10 w-10 h-10 group-hover:bg-diverse-pink/20 transition-colors">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-base font-bold mb-1 text-[#181919] text-center">{benefit.title}</h3>
+                <p className="text-sm text-[#181919] text-center font-medium">{benefit.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Modern Language Cards + Code Example */}
