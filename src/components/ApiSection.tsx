@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import ApiCodeBlock from './ApiCodeBlock';
 import { useApiSectionAnimations } from '../hooks/useApiSectionAnimations';
+import { useState } from 'react';
 
 export default function ApiSection() {
   const {
@@ -9,6 +10,8 @@ export default function ApiSection() {
     codeBlockAnimations,
     ctaAnimations
   } = useApiSectionAnimations();
+
+  const [hoveredBenefit, setHoveredBenefit] = useState<string | null>(null);
 
   const benefits = [
     { id: 'pagamentos', title: 'Pagamentos Automatizados', desc: 'Integre Pix e boletos diretamente no seu sistema.', icon: '📲' },
@@ -37,17 +40,19 @@ export default function ApiSection() {
           initial="hidden"
           animate={benefitsAnimations.controls}
           variants={benefitsAnimations.container}
+          onMouseLeave={() => setHoveredBenefit(null)}
         >
           {benefits.map((benefit) => (
             <motion.div
               key={benefit.id}
               variants={benefitsAnimations.item}
               className="p-6 bg-white rounded-xl shadow-lg border-2 border-[rgba(249,45,158,0.7)]"
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 10px 30px rgba(249,45,158,0.2)",
+              animate={{
+                opacity: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? 0.3 : 1,
+                filter: hoveredBenefit !== null && hoveredBenefit !== benefit.id ? "blur(2px)" : "blur(0px)",
                 transition: { duration: 0.3 }
               }}
+              onMouseEnter={() => setHoveredBenefit(benefit.id)}
             >
               <div className="text-4xl mb-4">{benefit.icon}</div>
               <h3 className="text-xl font-semibold mb-2 text-black">{benefit.title}</h3>

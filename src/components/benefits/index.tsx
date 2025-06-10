@@ -5,6 +5,7 @@ import RendimentoPayLogo from "../logos/LogoRendimentoPay"
 import AppOnIphone from "../../../public/images/app.png"
 import { benefits, features } from "./data"
 import { useBenefitsAnimations } from "@/hooks/useBenefitsAnimations"
+import { useState } from "react"
 
 export default function Benefits() {
   const {
@@ -16,6 +17,8 @@ export default function Benefits() {
     featuresAnimations,
     hoverGradientBorder
   } = useBenefitsAnimations();
+  
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   
   return (
     <section id="benefits" className="bg-gray-900 py-20 px-6 overflow-x-hidden w-full box-border">
@@ -106,7 +109,6 @@ export default function Benefits() {
                   animate={desktopAnimations.floatingAnimation(index, hoveredCard === index)}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  whileHover={desktopAnimations.hoverEffect}
                 >
                   <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -145,7 +147,6 @@ export default function Benefits() {
                   animate={desktopAnimations.floatingAnimation(index + 3, hoveredCard === index + 3)}
                   onMouseEnter={() => setHoveredCard(index + 3)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  whileHover={desktopAnimations.hoverEffect}
                 >
                   <div className="bg-white p-4 rounded-xl shadow-lg flex items-start space-x-4 border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -165,6 +166,7 @@ export default function Benefits() {
         {/* Features Section */}
         <motion.div 
           className="text-center"
+          style={{ boxSizing: "border-box" }}
           ref={featuresAnimations.ref}
           initial="hidden"
           animate={featuresAnimations.controls}
@@ -174,15 +176,20 @@ export default function Benefits() {
             <RendimentoPayLogo height={80} className="mx-auto mb-8" />
           </motion.div>
           
-          <div className="flex justify-center">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:auto-cols-auto lg:grid-flow-col gap-4 items-center w-fit">
+          <div className="flex justify-center" style={{ boxSizing: "border-box" }}>
+            <div 
+              className="grid grid-cols-2 md:grid-cols-3 lg:auto-cols-auto lg:grid-flow-col gap-4 items-center w-fit"
+              onMouseLeave={() => setHoveredFeature(null)}
+            >
               {features.map((item, i) => (
                 <motion.div
                   key={`rendimento-benefit-${i}`}
                   className={`rounded-xl group ${hoverGradientBorder}`}
-                  variants={featuresAnimations.item}
-                  whileHover={featuresAnimations.featureHover}
-                  transition={featuresAnimations.featureTransition}
+                  style={{ boxSizing: "border-box" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: hoveredFeature !== null && hoveredFeature !== i ? 0.3 : 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  onMouseEnter={() => setHoveredFeature(i)}
                 >
                   <div className="bg-white rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-[rgba(249,45,158,0.7)] group-hover:border-transparent aspect-square cursor-pointer p-6 min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px]">
                     <div className="w-10 h-10 flex items-center justify-center mb-2">
