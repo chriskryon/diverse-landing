@@ -73,7 +73,11 @@ export default function GenericModal({ isOpen, onClose, title, children }: Gener
               em: ({children}) => <em className="italic text-black">{children}</em>,
             }}
           >
-            {typeof children === 'string' ? children : React.isValidElement(children) ? children.props.children : String(children)}
+            {typeof children === 'string'
+              ? children
+              : typeof children === 'number'
+                ? children.toString()
+                : ''}
           </ReactMarkdown>
         </div>
       </motion.div>
