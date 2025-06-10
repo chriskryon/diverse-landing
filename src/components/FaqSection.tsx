@@ -61,7 +61,7 @@ export default function FaqSection() {
           ref={headerAnimation.ref}
           initial={headerAnimation.initial}
           animate={headerAnimation.animate}
-          className="text-center mb-12 lg:hidden"
+          className="text-black faq-text text-center mb-12 lg:hidden"
         >
           <h2 className="faq-text text-4xl lg:text-5xl font-bold mb-4 ">
             FAQ
@@ -78,7 +78,7 @@ export default function FaqSection() {
             ref={headerAnimation.ref}
             initial={headerAnimation.initial}
             animate={headerAnimation.animate}
-            className="hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
+            className="text-black faq-text hidden lg:block lg:col-span-4 lg:sticky lg:top-8"
           >
             <div className="pr-8">
               <h2 className="faq-text text-5xl xl:text-6xl font-bold  mb-6 leading-tight">
