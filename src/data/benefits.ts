@@ -1,14 +1,21 @@
 import { CreditCardIcon } from "lucide-react"
-import BetaVersionIcon from "../icons/BetaVersion"
-import ExclusiveProductsIcon from "../icons/ExclusiveProducts"
-import GeneralIcon from "../icons/General"
-import PJIcon from "../icons/PJ"
-import PixIcon from "../icons/Pix"
-import PayAndReceiveIcon from "../icons/PayAndReceive"
-import TransferIcon from "../icons/Transfer"
-import InsuranceIcon from "../icons/Insurance"
+import BetaVersionIcon from "../components/icons/BetaVersion"
+import ExclusiveProductsIcon from "../components/icons/ExclusiveProducts"
+import GeneralIcon from "../components/icons/General"
+import PJIcon from "../components/icons/PJ"
+import PixIcon from "../components/icons/Pix"
+import PayAndReceiveIcon from "../components/icons/PayAndReceive"
+import TransferIcon from "../components/icons/Transfer"
+import InsuranceIcon from "../components/icons/Insurance"
 
-export const benefits = [
+interface Benefit {
+  icon: React.ComponentType<{ className?: string }>;
+  title?: string;
+  text: string;
+  color: string;
+}
+
+export const benefits: Benefit[] = [
     {
       icon: GeneralIcon,
       title: "Para Geral",

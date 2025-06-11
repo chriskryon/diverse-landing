@@ -1,16 +1,15 @@
 "use client"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import RendimentoPayLogo from "../logos/LogoRendimentoPay"
-import AppOnIphone from "../../../public/images/app.png"
-import { benefits, features } from "./data"
+import RendimentoPayLogo from "./logos/LogoRendimentoPay"
+import AppOnIphone from "../../public/images/app.png"
+import { benefits, features } from "../data/benefits"
 import { useBenefitsAnimations } from "@/hooks/useBenefitsAnimations"
 
 export default function Benefits() {
   const {
     hoveredCard,
     setHoveredCard,
-    hoveredFeature,
     setHoveredFeature,
     titleAnimations,
     mobileAnimations,

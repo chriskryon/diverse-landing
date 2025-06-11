@@ -1,17 +1,7 @@
+import { testimonials } from "@/data/testimonials"
 import { Star } from "lucide-react"
 
 export default function Reviews() {
-  const testimonials = [
-    {
-      text: "Fantastic customer service. I shifted from a traditional bank to Sable and I'm glad I made the switch.",
-      author: "Sarah M.",
-    },
-    {
-      text: "The best bank for immigrants in the US. Thank you Sable! I really enjoy the great things you're doing.",
-      author: "Carlos R.",
-    },
-  ]
-
   return (
     <section className="bg-black py-20 px-6 overflow-x-hidden w-full">
       <div className="max-w-6xl mx-auto">

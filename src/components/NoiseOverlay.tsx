@@ -1,5 +1,3 @@
-import noiseImage from "../../public/images/noise.svg";
-
 const NoiseOverlay = ({ opacity = 0.1 }) => {
     const style: React.CSSProperties = {
         position: 'absolute',

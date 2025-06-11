@@ -2,61 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useApiSectionAnimations } from '../hooks/useApiSectionAnimations';
 import { useState } from 'react';
 import ApiCodeBlock from './ApiCodeBlock';
-import NodeJsIcon from './icons/NodeJs';
-import PythonIcon from './icons/Python';
-import { Smartphone, BarChart2, ShieldCheck, CreditCard, Database, Lock } from 'lucide-react';
-
-const codeExamples = {
-  node: `// Criar um Pix com axios (Node.js)
-const axios = require('axios');
-
-const response = await axios.post('https://api.diverse.com.vc/pix', {
-  valor: 100.00,
-  chave: 'email@cliente.com',
-  descricao: 'Pagamento de serviço'
-}, {
-  headers: {
-    'Authorization': 'Bearer SEU_TOKEN_AQUI'
-  }
-});
-
-console.log(response.data);`,
-  python: `# Criar um Pix com requests (Python)
-import requests
-
-headers = {
-    "Authorization": "Bearer SEU_TOKEN_AQUI"
-}
-payload = {
-    "valor": 100.00,
-    "chave": "email@cliente.com",
-    "descricao": "Pagamento de serviço"
-}
-response = requests.post("https://api.diverse.com.vc/pix", json=payload, headers=headers)
-print(response.json())`,
-  curl: `# Criar um Pix com cURL
-curl -X POST https://api.diverse.com.vc/pix \\
-  -H "Authorization: Bearer SEU_TOKEN_AQUI" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "valor": 100.00,
-    "chave": "email@cliente.com",
-    "descricao": "Pagamento de serviço"
-  }'`
-};
-
-const languages = [
-  {
-    id: 'node',
-    label: 'Node.js',
-    icon: <NodeJsIcon width={"32px"} />
-  },
-  {
-    id: 'python',
-    label: 'Python',
-    icon: <PythonIcon width={"32px"} />
-  },
-];
+import { codeExamples, languages, apiBenefits } from '../data/apiSection';
 
 export default function ApiSection() {
   const {
@@ -69,27 +15,6 @@ export default function ApiSection() {
   const [hoveredBenefit, setHoveredBenefit] = useState<string | null>(null);
   const [selectedLang, setSelectedLang] = useState<'node' | 'python' | 'curl'>('node');
   const [codeKey, setCodeKey] = useState(0);
-
-  const benefits = [
-    {
-      id: 'pagamentos',
-      title: 'Pagamentos Automatizados',
-      desc: 'Integre Pix e boletos diretamente no seu sistema.',
-      icon: <CreditCard className="w-6 h-6 text-diverse-pink" />
-    },
-    {
-      id: 'gestao',
-      title: 'Gestão em Tempo Real',
-      desc: 'Acesse saldos e relatórios financeiros via API.',
-      icon: <Database className="w-6 h-6 text-diverse-yellow" />
-    },
-    {
-      id: 'seguranca',
-      title: 'Segurança Bancária',
-      desc: 'Autenticação OAuth 2.0 e criptografia ponta a ponta.',
-      icon: <Lock className="w-6 h-6 text-diverse-black" />
-    },
-  ];
 
   return (
     <section id="api-section" className="py-10 bg-gray-900 text-white overflow-x-hidden w-full">
@@ -115,7 +40,7 @@ export default function ApiSection() {
           onMouseLeave={() => setHoveredBenefit(null)}
         >
           <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-            {benefits.map((benefit) => (
+            {apiBenefits.map((benefit) => (
               <motion.div
                 key={benefit.id}
                 variants={benefitsAnimations.item}
