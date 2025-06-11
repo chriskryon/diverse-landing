@@ -66,22 +66,26 @@ export default function Benefits() {
                 alt="iPhone Mockup" 
                 width={300} 
                 height={600} 
-                z-index={999}
                 className="-rotate-20 shadow-2xl mx-auto opacity-60" 
               />
             </motion.div>
             
-            {/* Benefits cards overlapping the phone */}
+            {/* Benefits cards overlapping the phone - animações mais fluidas */}
             <motion.div 
-              className="flex flex-col space-y-4 absolute top-4 left-0 right-0 px-4"
+              className="flex flex-col space-y-3 absolute top-4 left-0 right-0 px-4"
+              ref={mobileAnimations.ref}
+              initial="hidden"
+              animate={mobileAnimations.controls}
               variants={mobileAnimations.container}
             >
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={`mobile-benefit-${benefit.title}`}
-                  className={`bg-white rounded-xl shadow-lg transition-all duration-300 group border-2 border-diverse-pink/70 hover:border-diverse-pink hover:shadow-xl`}
+                  className="bg-white rounded-xl shadow-lg transition-all duration-300 group border-2 border-diverse-pink/70 hover:border-diverse-pink hover:shadow-xl"
                   variants={mobileAnimations.card(index)}
                   custom={index}
+                  whileHover={mobileAnimations.cardHover}
+                  whileTap={mobileAnimations.cardTap}
                 >
                   <div className="p-4 rounded-xl flex items-start space-x-4">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">

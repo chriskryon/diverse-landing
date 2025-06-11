@@ -7,12 +7,10 @@ const RendimentoPayLogo = (props: React.JSX.IntrinsicAttributes & React.SVGProps
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 2229 448"
     aria-labelledby="Rendimento Pay"
+    fill="white"
     {...props}
   >
     <title id="logoTitle">Rendimento Pay Logo</title>
-    <defs>
-      <style>{"\n      .cls-1 {\n        fill: #fff;\n      }\n    "}</style>
-    </defs>
     <path
       className="cls-1"
       d="m785.82,156.82c4.01,3.44,9.33,5.15,15.94,5.15,5.03,0,9.7-.99,14.03-2.98,4.31-1.98,7.94-4.72,10.87-8.23,2.93-3.49,4.81-7.52,5.63-12.07.22-1.45.34-2.78.34-4.01,0-3.68-.93-6.97-2.76-9.86-1.84-2.89-4.47-5.16-7.89-6.82-3.42-1.66-7.33-2.49-11.77-2.49-4.95,0-9.58,1.01-13.86,3.03-4.28,2.02-7.85,4.79-10.7,8.29-2.86,3.5-4.66,7.45-5.41,11.86-.3,1.37-.45,2.89-.45,4.55,0,5.63,2,10.17,6.03,13.59"
