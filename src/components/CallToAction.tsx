@@ -32,7 +32,7 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-4 sm:p-6 overflow-y-auto"
       style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
       onClick={handleBackdropClick}
     >
@@ -41,9 +41,9 @@ export default function CTAModal({ isOpen, onClose }: CTAModalProps) {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative p-4 sm:p-6 md:p-8 bg-black sm:bg-black/90 rounded-2xl shadow-xl w-full max-w-[90%] sm:max-w-sm md:max-w-md lg:max-w-lg m-auto border-2 border-diverse-pink"
+        className="relative p-4 sm:p-6 md:p-8 bg-black sm:bg-black/90 rounded-2xl shadow-xl w-full max-w-[90%] sm:max-w-sm md:max-w-md lg:max-w-lg my-auto border-2 border-diverse-pink"
         style={{ 
-          maxHeight: 'calc(100vh - 40px)',
+          minHeight: 'fit-content',
           backdropFilter: 'blur(12px)', 
           WebkitBackdropFilter: 'blur(12px)' 
         }}
